@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" th:href="@{/jystyle.css}">
+<html>
+<head>
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<title>COPPER & BRASS</title>
+</head>
+<body>
+<nav th:replace="~{header :: navbarFragment}"></nav>
+<div class="total">
+	
+	<div class="mainbg1">
+		<div class="mainwhite">Welcome to <br>
+		Copper and Brass Paper Goods <br>
+		<button class="blackbutton">Shop now</button>
+		</div>
+	</div>
+<br>
+
+	<div class="maincontent">
+		
+		<table style="width: 90%;">
+			<colgroup>
+		    	<col width="7%" />
+		        <col width="18%" />
+			    <col width="7%" />
+		        <col width="18%" />
+		    	<col width="7%" />
+		        <col width="18%" />
+		    	<col width="6%" />
+		        <col width="19%" />    
+		    </colgroup>
+			<tr>
+				<td><img class="mainicon" th:src="@{/img/main/shipping.png}"></td>
+				<td>Free Shipping</td>
+				<td><img class="mainicon" th:src="@{/img/main/refund.png}" ></td>
+				<td>Refund Policy</td>
+				<td><img class="mainicon" th:src="@{/img/main/payment.png}"></td>
+				<td>Secure Payment</td>
+				<td><img class="mainicon" th:src="@{/img/main/protection.png}"></td>
+				<td>Privacy Protection</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="details">Free shipping over $75</td>
+				<td></td>
+				<td class="details">No Refund</td>
+				<td></td>
+				<td class="details">100% Secure Payment</td>
+				<td></td>
+				<td class="details">Ensure privacy for customers</td>
+			</tr>
+		</table>
+	</div>
+	<br><br>
+	<div class="maincontent">
+		<table style="width: 90%;">
+				<colgroup>
+			    	<col width="33%"/> 
+			    	<col width="33%"/> 
+			    	<col width="33%"/>   
+			    </colgroup>		
+			<tr>
+				<td><img class="mainbox" id="mainbox1" th:src="@{/img/main/mainbox2.JPG}" width="200px" />
+					<div class="main_image_text">Stickers</div></td>
+				<td><img class="mainbox" id="mainbox2" th:src="@{/img/main/mainbox3.JPG}" width="200px" />
+					<div class="main_image_text" >Full Sized<br>Notebooks</div></td>
+				<td><img class="mainbox" id="mainbox3" th:src="@{/img/main/mainbox5.JPG}" width="200px" />
+					<div class="main_image_text">Notebooks</div></td>
+			</tr>
+		</table>
+	</div>
+	<br><br>
+	<div class="maincontent">
+		<div>best seller</div>	
+		<table>
+			<tr>
+				<td>Notebook</td>
+				<td>Greeting Cards</td>
+				<td>Wrapping Paper/Bags</td>
+				<td></td>
+				<td colspan="2"></td>
+			</tr>
+		</table>
+
+	</div>
+</div>
+
+	
+</body>
+<script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script> 
+<script>
+	
+	function hoverparentevent(id){
+	let test = document.getElementById(id);
+	
+	test.addEventListener('mouseover', function(event) {
+	  // highlight the mouseover target
+	  event.target.parentNode.style.backgroundColor = "#FFFFCC";
+	  event.target.parentNode.style.transform="scale(1.1)";
+      event.target.parentNode.style.zIndex = 1;
+      event.target.parentNode.style.transition = "all 0.5s";	  
+     
+	}, false);
+	
+	test.addEventListener("mouseout", function(event){
+	  event.target.parentNode.style.backgroundColor = "white";
+	  event.target.parentNode.style.transform="scale(1.0)";
+      event.target.parentNode.style.zIndex = 1;
+      event.target.parentNode.style.transition = "all 0.5s";	  
+
+	}, false);
+	}
+	
+	function hoverevent(id){
+	let test = document.getElementById(id);
+	
+	test.addEventListener('mouseover', function(event) {
+	  // highlight the mouseover target
+	  event.target.style.backgroundColor = "#FFFCCC";
+	  event.target.style.transform="scale(1.1)";
+      event.target.style.zIndex = 1;
+      event.target.style.transition = "all 0.5s";	  
+     
+	}, false);
+	
+	test.addEventListener("mouseout", function(event){
+	  event.target.style.backgroundColor = "#FFFCCC";
+	  event.target.style.transform="scale(1.0)";
+      event.target.style.zIndex = 1;
+      event.target.style.transition = "all 0.5s";	  
+
+	}, false);
+	}
+		
+	hoverparentevent('mainbox1');
+	hoverparentevent('mainbox2');
+	hoverparentevent('mainbox3');
+
+	
+</script>
+
+
+</html>
+
+
+<!--<img th:src="@{/img/mainPhotoBottom.png}" class="mainbg bottom" alt="mainbg">-->
+
+<!--https://gurtn.tistory.com/182    배경이미지 참고 링크(배경고정스크롤)-->
+<!--https://devbirdfeet.tistory.com/231  이미지 자르기-->

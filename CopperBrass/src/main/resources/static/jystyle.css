@@ -1,0 +1,194 @@
+
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: '모던굴림';
+    src: url('./fonts/210모던굴림B.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'NanumSquareRoundB';
+    src: url('./fonts/NanumSquareRoundB.ttf') format('truetype');
+}
+@font-face {
+    font-family: '나눔스퀘어';
+    src: url('./fonts/NANUMSQUARER.TTF') format('truetype');
+}
+@font-face {
+    font-family: '나눔손글씨동화또박';
+    src: url('./fonts/나눔손글씨동화또박.ttf') format('truetype');
+}
+
+
+
+body, html {
+	font-family: '나눔스퀘어';
+	font-size : 18px;
+
+}
+
+.header {
+      display: flex;
+      align-items: center;   /* 콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정 */
+}
+.navs{
+  margin: auto;
+}
+.navs .logo{
+ 	float: left;
+}
+.nav{
+	font-size : 16px;
+	margin-right: 10px;
+}
+a{
+	text-decoration-line: none;
+	font-weight: bold;
+}
+.nav .yellow{
+	color : #FFCC33
+}
+.nav:visited {
+  	color : black;
+}
+.nav:hover {
+ 	 color : #FFCC33;
+}
+
+
+
+
+/* 메인화면 배경 - 뒷 배경 고정(시작)*/
+.mainbg{
+	width: 100vw;
+	height: 560px;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	/*안씀*/
+}
+
+.mainbg1 {
+    background: url("../img/mainPhoto.jpg") no-repeat;
+    background-size: cover;  /*전체화면으로 덮기*/
+    width: 100%;
+    height: 460px;
+	background-attachment: fixed;  /*배경화면에 고정*/
+	position: relative;
+	z-index: 1;  /*화면 겹치게 1순위*/
+}
+
+.mainbg .bottom{
+	position: absolute;
+	z-index: 2;
+	margin-top: 200px;
+	/*안씀*/
+}
+
+.mainwhite{
+	font-family: 'NanumSquareRoundB';
+	color: white;
+	font-size : 36px;
+	position: absolute; 
+	left: 10%;
+	top: 50%; /* 안쪽 div의 position을 absolute로 설정하고,top 속성을 50%로 설정*/
+	transform: translate(0, -50%)  /*translate의 첫번째 값은 가로이동 거리, 두번째 값은 세로 이동거리*/
+
+}
+
+.text{
+	height: 500px;
+	background-color: aliceblue;
+}
+/* 메인화면 배경 - 뒷 배경 고정(끝)*/
+
+
+
+.blackbutton{
+	color : white;
+	font-size : 15px;
+	background-color: black;
+	border-radius: 5px;
+	width: 150px;
+	height: 40px;
+}
+table .mainicon{
+	width:40px;
+	height:40px;
+	align-items: center;
+	display:block; margin:auto;
+	
+}
+table .details{
+	font-family: '나눔스퀘어';	
+	margin-left:auto;
+	margin-right:auto;
+	font-size : 9px;
+	font-weight: bold;
+	
+}
+table{
+	font-family: 'NanumSquareRoundB';	
+	margin-left:auto;
+	margin-right:auto;
+	font-size : 12px;
+	font-weight: bold;
+}
+.total{
+	position: relative;
+	justify-content : center;
+}
+.maincontent{
+background-color: antiquewhite;
+	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
+	display: flex;
+}
+@media screen and (min-width: 800px) {
+.maincontent{
+	width: 800px;
+	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
+	display: flex;
+}
+}
+
+
+
+/*400x550 -> 200x275*/
+.mainbox {
+	display:block; margin:auto;
+	width: 200px !important;
+	height: 275px !important;
+	border-radius: 5%;
+	filter: brightness(0.5);
+}
+
+
+.mainbox:hover {
+	filter: brightness(1);
+}
+
+
+
+.total .maincontent .main_image{
+	position: relative;
+	background-color: antiquewhite;
+	width: 200px;
+	height: 275px;
+	
+}
+.total .maincontent .main_image .main_image_text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    color: white;
+    font-size: 20px;
+  }
+  
+  
+  
+  
+ 
