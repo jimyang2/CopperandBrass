@@ -74,18 +74,67 @@
 	</div>
 	<br><br>
 	<div class="maincontent">
-		<div>best seller</div>	
-		<table>
-			<tr>
-				<td>Notebook</td>
-				<td>Greeting Cards</td>
-				<td>Wrapping Paper/Bags</td>
-				<td></td>
-				<td colspan="2"></td>
-			</tr>
-		</table>
-
+	<div style="font-weight: bold;">Best Sellers</div>
 	</div>
+	<br>
+	<div class="maincontent bestseller">
+		<table style="width: 100%;">
+			<colgroup>
+		    	<col width="18%" />
+		        <col width="18%" />
+			    <col width="18%" />
+		        <col width="18%" />
+		    	<col width="28%" /> 
+		    </colgroup>
+			<tr>
+				<td colspan="4"><input type="button" class="bestsellerbtn margin" value="Notebook">
+				<input type="button" class="bestsellerbtn margin" value="Greeting Cards">
+				<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags">
+				<input type="button" class="bestsellerbtn" value="Sticky Notes"></td>
+				<td colspan="2" rowspan="5"><img th:src="@{/img/main/bestseller/main_bundle.JPG}" class="bundleimg mainbox"/></td>
+			</tr>
+			<tr>
+				<td rowspan="2" colspan="2">
+					<div class="bestcenter" id="bs1">
+						<div class="bestseller" id="bs1"s ><img class="bsimg" th:src="@{/img/main/bestseller/main1_1.JPG}"/> </div>
+						<div class="bestseller bestsellertxt" id="bs1_2"><div class="besttext">Blooming Notebook</div> <div class="bestprice">$20.00</div></div>
+					</div>
+				</td>
+				<td rowspan="2" colspan="2">
+					<div class="bestcenter" id="bs2">
+						<div class="bestseller" id="bs2-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_2.JPG}"/> </div>
+						<div class="bestseller bestsellertxt" id="bs2-1"><div class="besttext">Overthinker Notebook</div> <div class="bestprice">$20.00</div> </div>
+					</div>					
+				</td>
+			</tr>		
+			<tr>
+					
+			</tr>
+			<tr>
+				<td rowspan="2" colspan="2">
+					<div class="bestcenter" id="bs3">
+						<div class="bestseller" id="bs3-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_3.JPG}"/> </div>
+						<div class="bestseller bestsellertxt" id="bs3-2"><div class="besttext">Friendship Notebook</div> <div class="bestprice">$9.00</div> </div>
+					</div>					
+				</td>
+				<td rowspan="2" colspan="2">
+					<div class="bestcenter" id="bs4">
+						<div class="bestseller" id="bs4-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_4.JPG}" width="204px" height="200px"/> </div>
+						<div class="bestseller bestsellertxt" id="bs4-2"><div class="besttext">School Notebook</div> <div class="bestprice">$8.00</div> </div>
+					</div>
+				</td>					
+			</tr>
+			</tr>		
+			<tr>				
+		</table>
+	</div>
+	
+
+	<div class="maincontent">
+	<div style="font-weight: bold;">Shop By Categories</div>
+	</div>
+	
+	
 </div>
 
 	
@@ -93,6 +142,7 @@
 <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script> 
 <script>
 	
+	// hover mainbox
 	function hoverparentevent(id){
 	let test = document.getElementById(id);
 	
@@ -139,6 +189,32 @@
 	hoverparentevent('mainbox2');
 	hoverparentevent('mainbox3');
 
+
+
+	// hover best seller
+	
+	function hoverBestSellerEvent(id){
+	let bs = document.getElementById("bs1_1");
+	let bs_1 = document.getElementById("bs1_1");
+	let bs_2 = document.getElementById("bs1_2");
+	
+	
+	bs.addEventListener('mouseover', function(event) {
+	  // highlight the mouseover target
+	  event.target.style.transform="scale(1.1)";
+      event.target.style.zIndex = 1;
+      event.target.style.transition = "all 0.5s";	  
+     
+	}, false);
+	
+	bs.addEventListener("mouseout", function(event){
+	  event.target.style.transform="scale(1.0)";
+      event.target.style.zIndex = 1;
+      event.target.style.transition = "all 0.5s";	  
+
+	}, false);
+	}
+	hoverBestSellerEvent("bs1");
 	
 </script>
 
@@ -150,3 +226,4 @@
 
 <!--https://gurtn.tistory.com/182    배경이미지 참고 링크(배경고정스크롤)-->
 <!--https://devbirdfeet.tistory.com/231  이미지 자르기-->
+<!--https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-one-element-is-hovered  csshover 예제-->

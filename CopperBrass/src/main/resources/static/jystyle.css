@@ -26,7 +26,7 @@
 
 body, html {
 	font-family: '나눔스퀘어';
-	font-size : 18px;
+	font-size : 24px;
 
 }
 
@@ -41,7 +41,7 @@ body, html {
  	float: left;
 }
 .nav{
-	font-size : 16px;
+	font-size : 18px;
 	margin-right: 10px;
 }
 a{
@@ -49,13 +49,13 @@ a{
 	font-weight: bold;
 }
 .nav .yellow{
-	color : #FFCC33
+	color : #EDC06F
 }
 .nav:visited {
   	color : black;
 }
 .nav:hover {
- 	 color : #FFCC33;
+ 	 color : #EDC06F;
 }
 
 
@@ -109,7 +109,7 @@ a{
 
 .blackbutton{
 	color : white;
-	font-size : 15px;
+	font-size : 18px;
 	background-color: black;
 	border-radius: 5px;
 	width: 150px;
@@ -126,15 +126,15 @@ table .details{
 	font-family: '나눔스퀘어';	
 	margin-left:auto;
 	margin-right:auto;
-	font-size : 9px;
+	font-size : 11px;
 	font-weight: bold;
 	
 }
 table{
-	font-family: 'NanumSquareRoundB';	
+	font-family: '나눔스퀘어';	
 	margin-left:auto;
 	margin-right:auto;
-	font-size : 12px;
+	font-size : 18px;
 	font-weight: bold;
 }
 .total{
@@ -142,13 +142,15 @@ table{
 	justify-content : center;
 }
 .maincontent{
-background-color: antiquewhite;
+	position: relative;
+	background-color: white;
 	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
 	display: flex;
+	justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1200px) {
 .maincontent{
-	width: 800px;
+	width: 1200px;
 	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
 	display: flex;
 }
@@ -159,8 +161,8 @@ background-color: antiquewhite;
 /*400x550 -> 200x275*/
 .mainbox {
 	display:block; margin:auto;
-	width: 200px !important;
-	height: 275px !important;
+	width: 300px !important;
+	height: 400px !important;
 	border-radius: 5%;
 	filter: brightness(0.5);
 }
@@ -174,7 +176,7 @@ background-color: antiquewhite;
 
 .total .maincontent .main_image{
 	position: relative;
-	background-color: antiquewhite;
+	background-color: white;
 	width: 200px;
 	height: 275px;
 	
@@ -188,7 +190,95 @@ background-color: antiquewhite;
     font-size: 20px;
   }
   
+ .total .maincontent .bestseller th,td{
+	 text-align: center;
+	 padding: 10px;
+ 
+ }
+ 
+ .total .maincontent .bundleimg {
+	display:block; margin:auto;
+	width: 300px !important;
+	height: 430px !important;
+	border-radius: 5%;
+}
+ .total .maincontent .bestcenter{
+
+  display: flex;
+ }
   
+
+ .total .maincontent .bestseller{
+	 text-align: center;
+	 width: 200px !important;
+	 height: 200px !important;
+	 flex:1;
+	 border: 1px solid darkgray;
+	 color: dimgray;
+	 overflow: hidden; /*이미지 크기 넘지않게*/
+	 
+ }
+ .total .maincontent .bestseller .besttext{
+	 text-align: center;
+	 width: 100%;
+	 padding-top:70px;
+
+	 color: dimgray;
+	 
+ } 
+ .total .maincontent .bestseller .bestprice{
+	 text-align: center;
+	 width: 100%;
+	 padding-top:30px;
+
+	 color: dimgray;
+	 
+ }  
+ .bestsellerbtn{
+
+	 background-color: white;
+	 border: dashed 1px #EDC06F;
+	 border-radius: 10px;
+	 color: #EDC06F;
+	 font-size: 15px;
+	 padding: 18px 45px;
+ } 
+ .bestsellerbtn.margin{
+
+	 background-color: white;
+	 border: dashed 1px #EDC06F;
+	 border-radius: 10px;
+	 color: #EDC06F;
+	 font-size: 15px;
+	 padding: 18px 45px;
+	 margin-right: 10px;
+ }
   
-  
+ .bestsellerbtn:hover{
+
+	 background-color: #EDC06F;
+	 color: white;
+
+ } 
+ .bestsellerbtn.margin:hover{
+
+	 background-color: #EDC06F;
+	 color: white;
+ }  
+
+.total .maincontent .bestcenter .bsimg{
+	width: 204px;
+	height: 200px;
+}
+.bestcenter:hover .bsimg{
+	transform: scale(1.1);
+	transition: all 0.5s;
+	overflow: hidden; 
+}
+.bestcenter:hover .bestsellertxt{
+	background-color: #EDC06F;
+	overflow: hidden; 
+	
+}
+    
  
