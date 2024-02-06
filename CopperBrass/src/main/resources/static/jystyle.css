@@ -21,11 +21,21 @@
     font-family: '나눔손글씨동화또박';
     src: url('./fonts/나눔손글씨동화또박.ttf') format('truetype');
 }
-
-
+@font-face {
+    font-family: '오방맛길서체';
+    src: url('./fonts/YJ_Obang_TTF.ttf') format('truetype');
+}
+@font-face {
+    font-family: '롯데마트잠실체4';
+    src: url('./fonts/The Jamsil 4 Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: '롯데마트잠실체3';
+    src: url('./fonts/The Jamsil 3 Regular.ttf') format('truetype');
+}
 
 body, html {
-	font-family: '나눔스퀘어';
+	font-family: '롯데마트잠실체4';
 	font-size : 24px;
 
 }
@@ -33,6 +43,7 @@ body, html {
 .header {
       display: flex;
       align-items: center;   /* 콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정 */
+	font-family: 'NanumSquareRoundB';
 }
 .navs{
   margin: auto;
@@ -89,7 +100,7 @@ a{
 }
 
 .mainwhite{
-	font-family: 'NanumSquareRoundB';
+	font-family: '롯데마트잠실체4';
 	color: white;
 	font-size : 36px;
 	position: absolute; 
@@ -159,36 +170,71 @@ table{
 
 
 /*400x550 -> 200x275*/
+.ytotal{
+	position: relative;
+	height: 420px;
+}
+.yellowbox {
+	display:block; margin:auto;
+	width: 300px !important;
+	height: 400px !important;
+	border-radius: 5%;
+	background-color:lightyellow;
+	position: absolute;
+	top: 0;
+}
+.big{
+	position: absolute;
+}
+
+.temp{
+	position: relative;
+	width: 310px ;
+	height: 410px ;
+}
+
 .mainbox {
 	display:block; margin:auto;
 	width: 300px !important;
 	height: 400px !important;
 	border-radius: 5%;
 	filter: brightness(0.5);
+	position: absolute;
 }
 
 
-.mainbox:hover {
-	filter: brightness(1);
-}
-
-
-
-.total .maincontent .main_image{
-	position: relative;
-	background-color: white;
-	width: 200px;
-	height: 275px;
-	
-}
-.total .maincontent .main_image .main_image_text {
+.main_image_text {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate( -50%, -50% );
     color: white;
     font-size: 20px;
+    font-family: "롯데마트잠실체4";
+    letter-spacing:1px;
   }
+  
+ .mainbox_shop_btn{
+	 height:45px;
+	 width: 180px;
+    font-size: 15px;
+border-radius: 10px;
+	 position: absolute;
+	 color: white;
+	 font-weight: bold;
+    top: 60%;
+    left: 50%;
+    transform: translate( -50%, -50% );	 
+    border: solid 1px white;
+    background-color:transparent;
+ }
+ 
+ .mainbox_shop_btn:hover{
+	background-color: #EDC06F;
+	color: white;
+ } 
+  
+  
   
  .total .maincontent .bestseller th,td{
 	 text-align: center;
@@ -280,5 +326,90 @@ table{
 	overflow: hidden; 
 	
 }
-    
+   
+ .newsletter{
+	 background-color: #E0F2F1;
+	 height:550px;	 
+	 font-family: "롯데마트잠실체4";
+	 font-weight: bold;
+  display: flex;
+  justify-content: center;
+ }
+ .newsletter .lettertext{
+	 float: left;
+	 width: 60%;
+	 font-size: 40px;
+	 font-weight: bold;
+	 text-align: center;
+	 height: 400px;
+position: relative;
+ }
+ .newsletter .letterimg{
+	float: left;
+	width: 40%;
+	height: 400px;
+position: relative;
+ } 
+  .newsletter .lettertext .lettertextcenter{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+ }
+  .newsletter .letterimg .letterimgcenter{
+  position: absolute;
+  width: 100%;
+  top: 20%;
+ }
+ .newslettersend{
+	 width: 80%;
+	 height: 80px;
+	 background-color:white;
+	 bottom: 0;
+	 position : absolute;
+	 border: 1px solid darkgray;
+	 text-align: center;
+	 display:table;  /*테이블 중앙정렬(세로)하기 위해서 */
+
+ }
+ .newslettersend table{
+	height:40px;
+	align-items: center;
+	display:table-cell; /*테이블 중앙정렬(세로)하기 위해서 */
+ 	vertical-align:middle; /*테이블 중앙정렬(세로)하기 위해서 */
+ }
+ .subscribebutton{
+	 width: 100px; 
+	 height: 40px;
+	 background-color: #EDC06F;
+	 border-radius: 5px;
+	 border: none;
+ }
  
+ .footer{
+	 background-color: snow;
+	 font-family: "나눔스퀘어";
+	 font-size: 16px;
+	 line-height:200%;
+	 color: dimgray;
+	 height: 300px;
+	 position: relative;
+ }
+ .footer2{
+	 background-color: snow;
+	 font-family: "나눔스퀘어";
+	 font-size: 16px;
+	 color: black;
+	 height: 80px;
+	 color: dimgray;
+	 position: relative;
+
+ } 
+ 
+ .bundlebig {
+	display:block; margin:auto;
+	width: 300px !important;
+	height: 400px !important;
+	border-radius: 5%;
+	filter: brightness(0.5);
+	position: relative;
+}
