@@ -87,8 +87,7 @@
 							<div class="yellowbox" id="mainbox2yb"></div>
 							<div class="big" id="mainbox2">
 								<div class="temp">
-									<img class="mainbox" id="mainbox2img" th:src="@{/img/main/mainbox3.JPG}"
-										width="200px" />
+									<img class="mainbox" id="mainbox2img" th:src="@{/img/main/mainbox3.JPG}" width="200px" />
 									<div class="main_image_text" id="mainbox2txt">Full Sized<br>Notebooks</div>
 									<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
 								</div>
@@ -100,8 +99,7 @@
 							<div class="yellowbox" id="mainbox3yb"></div>
 							<div class="big" id="mainbox3">
 								<div class="temp">
-									<img class="mainbox" id="mainbox3img" th:src="@{/img/main/mainbox5.JPG}"
-										width="200px" />
+									<img class="mainbox" id="mainbox3img" th:src="@{/img/main/mainbox5.JPG}" width="200px" />
 									<div class="main_image_text" id="mainbox3txt">Notebooks</div>
 									<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
 								</div>
@@ -127,24 +125,18 @@
 					<col width="28%" />
 				</colgroup>
 				<tr>
-					<td colspan="4"><input type="button" class="bestsellerbtn margin" value="Notebook">
-						<input type="button" class="bestsellerbtn margin" value="Greeting Cards">
-						<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags">
-						<input type="button" class="bestsellerbtn" value="Sticky Notes">
-					</td>
-<!--					<td colspan="2" rowspan="5"><img th:src="@{/img/main/bestseller/main_bundle.JPG}"
-							class="bundleimg bundlebig" />
-							
-							
-					</td>-->
-					
+					<td colspan="4">
+						<input type="button" class="bestsellerbtn margin" value="Notebook" onclick="changeBestsellersEvent(1)">
+						<input type="button" class="bestsellerbtn margin" value="Greeting Cards" onclick="changeBestsellersEvent(2)">
+						<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags" onclick="changeBestsellersEvent(3)">
+						<input type="button" class="bestsellerbtn" value="Sticky Notes" onclick="changeBestsellersEvent(4)">
+					</td>					
 					<td colspan="2" rowspan="5">
 						<div class="ytotal">
 							<div class="yellowbox" id="mainbox4yb"></div>
 							<div class="big" id="mainbox4">
 								<div class="temp">
-									<img class="mainbox" id="mainbox4img" th:src="@{/img/main/bestseller/main_bundle.JPG}"
-										width="200px" />
+									<img class="mainbox" id="mainbox4img" th:src="@{/img/main/bestseller/main_bundle.JPG}" width="200px" />
 									<div class="main_image_text" id="mainbox4txt" style="height: 500px;">Bundles</div>
 									<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
 								</div>
@@ -180,8 +172,7 @@
 				<tr>
 					<td rowspan="2" colspan="2">
 						<div class="bestcenter" id="bs3">
-							<div class="bestseller" id="bs3-1"><img class="bsimg"
-									th:src="@{/img/main/bestseller/main1_3.JPG}" /> </div>
+							<div class="bestseller" id="bs3-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_3.JPG}" /> </div>
 							<div class="bestseller bestsellertxt" id="bs3-2">
 								<div class="besttext">Friendship Notebook</div>
 								<div class="bestprice">$9.00</div>
@@ -190,8 +181,7 @@
 					</td>
 					<td rowspan="2" colspan="2">
 						<div class="bestcenter" id="bs4">
-							<div class="bestseller" id="bs4-1"><img class="bsimg"
-									th:src="@{/img/main/bestseller/main1_4.JPG}" width="204px" height="200px" /> </div>
+							<div class="bestseller" id="bs4-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_4.JPG}" width="204px" height="200px" /> </div>
 							<div class="bestseller bestsellertxt" id="bs4-2">
 								<div class="besttext">School Notebook</div>
 								<div class="bestprice">$8.00</div>
@@ -255,16 +245,15 @@
 			<div class="newslettersend">
 				<table width="90%">
 					<colgroup>
-						<col width="5%" />
-						<col width="35%" />
-						<col width="20%" />
-						<col width="10%" />
+						<col width="5%"/>
+						<col width="35%"/>
+						<col width="20%"/>
+						<col width="10%"/>
 					</colgroup>
 					<tr>
 						<td><img class="bsimg" th:src="@{/img/main/mail.JPG}" width="70px" /></td>
 						<td style="text-align:left"><b>Sign Up To Our Newsletter</b>
-							<div style="font-size: 12px;">Subscribe to receive updates, access to exclusive deals..
-							</div>
+							<div style="font-size: 12px;">Subscribe to receive updates, access to exclusive deals..</div>
 						</td>
 						<td><input type="text" style="width: 300px; height: 30px;" /></td>
 						<td><input type="button" class="subscribebutton" value="Subscribe" /></td>
@@ -314,7 +303,9 @@
 	hoverparentevent('mainbox3');
 	hoverparentevent('mainbox4');	
 
-
+	function changeBestsellersEvent(num){
+		
+	}
 
 </script>
 

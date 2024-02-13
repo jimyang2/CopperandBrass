@@ -1,4 +1,3 @@
-/*font*/
 
 @font-face {
     font-family: 'SDSamliphopangche_Outline';
@@ -35,72 +34,55 @@
     src: url('./fonts/The Jamsil 3 Regular.ttf') format('truetype');
 }
 
-
-/*html*/
 body, html {
 	font-family: '롯데마트잠실체4';
 	font-size : 24px;
 
 }
 
-/*header (시작)*/
 .header {
       display: flex;
       align-items: center;   /* 콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정 */
 	font-family: 'NanumSquareRoundB';
 }
-.header .navs{
+.navs{
   margin: auto;
 }
-.header .navs .logo{
+.navs .logo{
  	float: left;
 }
-.header .navs .nav{
+.nav{
 	font-size : 18px;
 	margin-right: 10px;
 }
-.header a{
+a{
 	text-decoration-line: none;
 	font-weight: bold;
 }
-
-.header .navs  .nav .yellow{
+.nav .yellow{
 	color : #EDC06F
 }
-.header .navs .nav:visited {
+.nav:visited {
   	color : black;
 }
-.header .navs  .nav:hover {
+.nav:hover {
  	 color : #EDC06F;
 }
-/*header (끝)*/
 
 
 
-.total{
-	position: relative;
-	justify-content : center;
-}
-table{
-	font-family: '나눔스퀘어';	
-	margin-left:auto;
-	margin-right:auto;
-	font-size : 18px;
-	font-weight: bold;
-}
 
-
-
-/* 메인화면 배경:뒷 배경 고정 (시작)*/
-.mainbg{/*안씀*/
+/* 메인화면 배경 - 뒷 배경 고정(시작)*/
+.mainbg{
 	width: 100vw;
 	height: 560px;
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
+	/*안씀*/
 }
 
-.total .mainbg1 {
+.mainbg1 {
     background: url("../img/mainPhoto.jpg") no-repeat;
     background-size: cover;  /*전체화면으로 덮기*/
     width: 100%;
@@ -110,7 +92,14 @@ table{
 	z-index: 1;  /*화면 겹치게 1순위*/
 }
 
-.total .mainbg1 .mainwhite{
+.mainbg .bottom{
+	position: absolute;
+	z-index: 2;
+	margin-top: 200px;
+	/*안씀*/
+}
+
+.mainwhite{
 	font-family: '롯데마트잠실체4';
 	color: white;
 	font-size : 36px;
@@ -120,7 +109,16 @@ table{
 	transform: translate(0, -50%)  /*translate의 첫번째 값은 가로이동 거리, 두번째 값은 세로 이동거리*/
 
 }
-.total .mainbg1 .mainwhite .blackbutton{
+
+.text{
+	height: 500px;
+	background-color: aliceblue;
+}
+/* 메인화면 배경 - 뒷 배경 고정(끝)*/
+
+
+
+.blackbutton{
 	color : white;
 	font-size : 18px;
 	background-color: black;
@@ -128,34 +126,14 @@ table{
 	width: 150px;
 	height: 40px;
 }
-/* 메인화면 배경:뒷 배경 고정 시작 (끝)*/
-
-
-/* 메인화면 아이콘 (시작)*/
-.total .maincontent{
-	position: relative;
-	background-color: white;
-	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
-	display: flex;
-	justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
-}
-@media screen and (min-width: 1200px) {
-.total .maincontent{
-	width: 1200px;
-	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
-	display: flex;
-}
-}
-
-
-.total .maincontent table .mainicon{
+table .mainicon{
 	width:40px;
 	height:40px;
 	align-items: center;
 	display:block; margin:auto;
 	
 }
-.total .maincontent table .details{
+table .details{
 	font-family: '나눔스퀘어';	
 	margin-left:auto;
 	margin-right:auto;
@@ -163,20 +141,40 @@ table{
 	font-weight: bold;
 	
 }
-
-/* 메인화면 아이콘 (끝)*/
-
-
-
-
-/* 메인화면 이미지3개 (시작)*/
-/*400x550 -> 200x275*/
-.total .maincontent .ytotal{
-	position: relative;
-	height: 400px;
-	width: 300px ;
+table{
+	font-family: '나눔스퀘어';	
+	margin-left:auto;
+	margin-right:auto;
+	font-size : 18px;
+	font-weight: bold;
 }
-.total .maincontent .ytotal .yellowbox {
+.total{
+	position: relative;
+	justify-content : center;
+}
+.maincontent{
+	position: relative;
+	background-color: white;
+	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
+	display: flex;
+	justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
+}
+@media screen and (min-width: 1200px) {
+.maincontent{
+	width: 1200px;
+	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
+	display: flex;
+}
+}
+
+
+
+/*400x550 -> 200x275*/
+.ytotal{
+	position: relative;
+	height: 420px;
+}
+.yellowbox {
 	display:block; margin:auto;
 	width: 300px !important;
 	height: 400px !important;
@@ -185,17 +183,17 @@ table{
 	position: absolute;
 	top: 0;
 }
-.total .maincontent .ytotal .big{
+.big{
 	position: absolute;
 }
 
-.total .maincontent .ytotal .big .temp{
+.temp{
 	position: relative;
-	width: 300px ;
-	height: 400px ;
+	width: 310px ;
+	height: 410px ;
 }
 
-.total .maincontent .ytotal .big .temp .mainbox {
+.mainbox {
 	display:block; margin:auto;
 	width: 300px !important;
 	height: 400px !important;
@@ -205,7 +203,7 @@ table{
 }
 
 
-.total .maincontent .ytotal .big .temp .main_image_text {
+.main_image_text {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -216,11 +214,11 @@ table{
     letter-spacing:1px;
   }
   
- .total .maincontent .ytotal .big .temp .mainbox_shop_btn{
+ .mainbox_shop_btn{
 	 height:45px;
 	 width: 180px;
     font-size: 15px;
-	border-radius: 10px;
+border-radius: 10px;
 	 position: absolute;
 	 color: white;
 	 font-weight: bold;
@@ -231,14 +229,13 @@ table{
     background-color:transparent;
  }
  
-  .total .maincontent .ytotal .big .temp .mainbox_shop_btn:hover{
+ .mainbox_shop_btn:hover{
 	background-color: #EDC06F;
 	color: white;
  } 
-/* 메인화면 이미지3개 (끝)*/
-
-
-/* 메인화면 베스트셀러 (시작)*/
+  
+  
+  
  .total .maincontent .bestseller th,td{
 	 text-align: center;
 	 padding: 10px;
@@ -283,7 +280,7 @@ table{
 	 color: dimgray;
 	 
  }  
-  .total .maincontent .bestsellerbtn{
+ .bestsellerbtn{
 
 	 background-color: white;
 	 border: dashed 1px #EDC06F;
@@ -292,7 +289,7 @@ table{
 	 font-size: 15px;
 	 padding: 18px 45px;
  } 
-  .total .maincontent .bestsellerbtn .margin{
+ .bestsellerbtn.margin{
 
 	 background-color: white;
 	 border: dashed 1px #EDC06F;
@@ -313,7 +310,8 @@ table{
 
 	 background-color: #EDC06F;
 	 color: white;
- } 
+ }  
+
 .total .maincontent .bestcenter .bsimg{
 	width: 204px;
 	height: 200px;
@@ -328,10 +326,7 @@ table{
 	overflow: hidden; 
 	
 }
-/* 메인화면 베스트셀러 (끝)*/ 
-
-
-/* 메인화면 뉴스레터 (시작)*/
+   
  .newsletter{
 	 background-color: #E0F2F1;
 	 height:550px;	 
@@ -390,15 +385,6 @@ position: relative;
 	 border: none;
  }
  
- .newsletter .newslettersend .text{
-	height: 500px;
-	background-color: aliceblue;
-}
-
- /* 메인화면 뉴스레터 (끝)*/
- 
- 
- /* footer (시작)*/
  .footer{
 	 background-color: snow;
 	 font-family: "나눔스퀘어";
@@ -418,4 +404,12 @@ position: relative;
 	 position: relative;
 
  } 
-  /* footer (끝)*/
+ 
+ .bundlebig {
+	display:block; margin:auto;
+	width: 300px !important;
+	height: 400px !important;
+	border-radius: 5%;
+	filter: brightness(0.5);
+	position: relative;
+}
