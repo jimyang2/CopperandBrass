@@ -110,12 +110,14 @@
 				</tr>
 			</table>
 		</div>
+		
+		
 		<br><br>
 		<div class="maincontent">
 			<div style="font-weight: bold;">Best Sellers</div>
 		</div>
 		<br>
-		<div class="maincontent bestseller">
+		<div class="maincontent bestseller" >
 			<table style="width: 100%;">
 				<colgroup>
 					<col width="18%" />
@@ -126,10 +128,10 @@
 				</colgroup>
 				<tr>
 					<td colspan="4">
-						<input type="button" class="bestsellerbtn margin" value="Notebook" onclick="changeBestsellersEvent(1)">
-						<input type="button" class="bestsellerbtn margin" value="Greeting Cards" onclick="changeBestsellersEvent(2)">
-						<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags" onclick="changeBestsellersEvent(3)">
-						<input type="button" class="bestsellerbtn" value="Sticky Notes" onclick="changeBestsellersEvent(4)">
+						<input type="button" class="bestsellerbtn margin" value="Notebook" onclick="changeBestsellers('bs1')">
+						<input type="button" class="bestsellerbtn margin" value="Greeting Cards" onclick="changeBestsellers('bs2')">
+						<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags" onclick="changeBestsellers('bs3')">
+						<input type="button" class="bestsellerbtn" value="Sticky Notes" onclick="changeBestsellers('bs4')">
 					</td>					
 					<td colspan="2" rowspan="5">
 						<div class="ytotal">
@@ -146,18 +148,17 @@
 				</tr>
 				<tr>
 					<td rowspan="2" colspan="2">
-						<div class="bestcenter" id="bs1">
-							<div class="bestseller" id="bs1" s><img class="bsimg"
-									th:src="@{/img/main/bestseller/main1_1.JPG}" /> </div>
+						<div class="bestcenter" id="bs1" th:object="${bestseller1.get(0)}">
+							<div class="bestseller" id="bs1" s><img class="bsimg" th:src="*{imgsrc}" /> </div>
 							<div class="bestseller bestsellertxt" id="bs1_2">
-								<div class="besttext">Blooming Notebook</div>
-								<div class="bestprice">$20.00</div>
+								<div class="besttext" th:text="*{name}"></div>
+								<div class="bestprice" th:text="*{price}"></div>
 							</div>
 						</div>
 					</td>
 					<td rowspan="2" colspan="2">
 						<div class="bestcenter" id="bs2">
-							<div class="bestseller" id="bs2-1"><img class="bsimg"
+							<div class="bestseller" id="bs2_1"><img class="bsimg"
 									th:src="@{/img/main/bestseller/main1_2.JPG}" /> </div>
 							<div class="bestseller bestsellertxt" id="bs2-1">
 								<div class="besttext">Overthinker Notebook</div>
@@ -172,7 +173,7 @@
 				<tr>
 					<td rowspan="2" colspan="2">
 						<div class="bestcenter" id="bs3">
-							<div class="bestseller" id="bs3-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_3.JPG}" /> </div>
+							<div class="bestseller" id="bs3_1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_3.JPG}" /> </div>
 							<div class="bestseller bestsellertxt" id="bs3-2">
 								<div class="besttext">Friendship Notebook</div>
 								<div class="bestprice">$9.00</div>
@@ -181,7 +182,7 @@
 					</td>
 					<td rowspan="2" colspan="2">
 						<div class="bestcenter" id="bs4">
-							<div class="bestseller" id="bs4-1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_4.JPG}" width="204px" height="200px" /> </div>
+							<div class="bestseller" id="bs4_1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_4.JPG}" width="204px" height="200px" /> </div>
 							<div class="bestseller bestsellertxt" id="bs4-2">
 								<div class="besttext">School Notebook</div>
 								<div class="bestprice">$8.00</div>
@@ -260,7 +261,7 @@
 					</tr>
 
 				</table>
-
+<span th:text="dd" id="test"></span>
 
 			</div>
 		</div>
@@ -284,7 +285,6 @@
 			// highlight the mouseover target
 			document.getElementById(yb).style.transform = "scale(1.05)";
 			document.getElementById(yb).style.transition = "all 0.5s";
-
 			document.getElementById(img).style.filter = "brightness(100%)";
 
 		}, false);
@@ -292,7 +292,6 @@
 		test.addEventListener("mouseout", function (event) {
 			document.getElementById(yb).style.transform = "scale(1.0)";
 			document.getElementById(yb).style.transition = "all 0.5s";
-		
 			document.getElementById(img).style.filter = "brightness(50%)";
 
 		}, false);
@@ -303,7 +302,17 @@
 	hoverparentevent('mainbox3');
 	hoverparentevent('mainbox4');	
 
-	function changeBestsellersEvent(num){
+	function changeBestsellers(test){
+		let bs = document.getElementById("test");
+		bs.innerText='dd';
+		alert(bs.text);
+		
+		
+		
+		//replace('bs','bestseller')
+		
+		
+		
 		
 	}
 

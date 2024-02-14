@@ -14,9 +14,9 @@ public class stocks {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
 	private Integer num;
+	
+	private String id;
 	
 	private String name;
 	
@@ -24,6 +24,6 @@ public class stocks {
 	
 	private String price;
 	
-	private String imgscr;
+	private String imgsrc;
 	
 }
