@@ -25,9 +25,17 @@ public class MainController {
 		List<stocks> bestseller2 = new ArrayList<>();
 		bestseller2 = this.stocksService.mainBestseller("main2");
 		
+		List<stocks> bestseller3 = new ArrayList<>();
+		bestseller3 = this.stocksService.mainBestseller("main3");
+		
+		List<stocks> bestseller4 = new ArrayList<>();
+		bestseller4 = this.stocksService.mainBestseller("main4");
+		
 		
 		model.addAttribute("bestseller1",bestseller1);
 		model.addAttribute("bestseller2",bestseller2);
+		model.addAttribute("bestseller3",bestseller3);
+		model.addAttribute("bestseller4",bestseller4);		
 		model.addAttribute("test","/img/main/bestseller/main_bundle.JPG");
 		
 		return "main";

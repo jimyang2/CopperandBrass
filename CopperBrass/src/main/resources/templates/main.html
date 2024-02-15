@@ -128,10 +128,10 @@
 				</colgroup>
 				<tr>
 					<td colspan="4">
-						<input type="button" class="bestsellerbtn margin" value="Notebook" onclick="changeBestsellers('bs1')">
-						<input type="button" class="bestsellerbtn margin" value="Greeting Cards" onclick="changeBestsellers('bs2')">
-						<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags" onclick="changeBestsellers('bs3')">
-						<input type="button" class="bestsellerbtn" value="Sticky Notes" onclick="changeBestsellers('bs4')">
+						<input type="button" class="bestsellerbtn margin" value="Notebook" onclick="changeBestsellers('bs1');">
+						<input type="button" class="bestsellerbtn margin" value="Greeting Cards" onclick="changeBestsellers('bs2');">
+						<input type="button" class="bestsellerbtn margin" value="Wrapping Paper/Bags" onclick="changeBestsellers('bs3');">
+						<input type="button" class="bestsellerbtn margin" value="Sticky Notes" onclick="changeBestsellers('bs4');">
 					</td>					
 					<td colspan="2" rowspan="5">
 						<div class="ytotal">
@@ -149,20 +149,19 @@
 				<tr>
 					<td rowspan="2" colspan="2">
 						<div class="bestcenter" id="bs1" th:object="${bestseller1.get(0)}">
-							<div class="bestseller" id="bs1" s><img class="bsimg" th:src="*{imgsrc}" /> </div>
+							<div class="bestseller" id="bs1"><img class="bsimg" id="bs1_img" th:src="*{imgsrc}" /> </div>
 							<div class="bestseller bestsellertxt" id="bs1_2">
-								<div class="besttext" th:text="*{name}"></div>
-								<div class="bestprice" th:text="*{price}"></div>
+								<div class="besttext" id="bs1_txt" th:text="*{name}"></div>
+								<div class="bestprice" id="bs1_price" th:text="*{price}"></div>
 							</div>
 						</div>
 					</td>
 					<td rowspan="2" colspan="2">
-						<div class="bestcenter" id="bs2">
-							<div class="bestseller" id="bs2_1"><img class="bsimg"
-									th:src="@{/img/main/bestseller/main1_2.JPG}" /> </div>
-							<div class="bestseller bestsellertxt" id="bs2-1">
-								<div class="besttext">Overthinker Notebook</div>
-								<div class="bestprice">$20.00</div>
+						<div class="bestcenter" id="bs2" th:object="${bestseller1.get(1)}">
+							<div class="bestseller" id="bs2_1"><img class="bsimg" id="bs2_img" th:src="*{imgsrc}" /> </div>
+							<div class="bestseller bestsellertxt" id="bs2_1">
+								<div class="besttext" id="bs2_txt" th:text="*{name}"></div>
+								<div class="bestprice" id="bs2_price" th:text="*{price}"></div>
 							</div>
 						</div>
 					</td>
@@ -172,20 +171,20 @@
 				</tr>
 				<tr>
 					<td rowspan="2" colspan="2">
-						<div class="bestcenter" id="bs3">
-							<div class="bestseller" id="bs3_1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_3.JPG}" /> </div>
-							<div class="bestseller bestsellertxt" id="bs3-2">
-								<div class="besttext">Friendship Notebook</div>
-								<div class="bestprice">$9.00</div>
+						<div class="bestcenter" id="bs3" th:object="${bestseller1.get(2)}">
+							<div class="bestseller" id="bs3_1"><img class="bsimg" id="bs3_img" th:src="*{imgsrc}" /> </div>
+							<div class="bestseller bestsellertxt" id="bs3_2">
+								<div class="besttext" id="bs3_txt" th:text="*{name}"></div>
+								<div class="bestprice" id="bs3_price" th:text="*{price}"></div>
 							</div>
 						</div>
 					</td>
 					<td rowspan="2" colspan="2">
-						<div class="bestcenter" id="bs4">
-							<div class="bestseller" id="bs4_1"><img class="bsimg" th:src="@{/img/main/bestseller/main1_4.JPG}" width="204px" height="200px" /> </div>
-							<div class="bestseller bestsellertxt" id="bs4-2">
-								<div class="besttext">School Notebook</div>
-								<div class="bestprice">$8.00</div>
+						<div class="bestcenter" id="bs4" th:object="${bestseller1.get(3)}">
+							<div class="bestseller" id="bs4_1"><img class="bsimg" id="bs4_img" th:src="*{imgsrc}" /> </div>
+							<div class="bestseller bestsellertxt" id="bs4_2">
+								<div class="besttext" id="bs4_txt" th:text="*{name}"></div>
+								<div class="bestprice" id="bs4_price" th:text="*{price}"></div>
 							</div>
 						</div>
 					</td>
@@ -272,7 +271,7 @@
 </body>
 
 <script src="https: //code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script> 
-<script>
+<script th:inline="javascript">
 	// hover mainbox
 	function hoverparentevent(mainbox) {
 		let test = document.getElementById(mainbox);
@@ -302,19 +301,66 @@
 	hoverparentevent('mainbox3');
 	hoverparentevent('mainbox4');	
 
-	function changeBestsellers(test){
-		let bs = document.getElementById("test");
-		bs.innerText='dd';
-		alert(bs.text);
+
+	function changeBestsellers(bsid){
+
+		if (bsid == 'bs1' ){	
+		   [# th:each="bs, num : ${bestseller1}"]
+				document.getElementById('bs[[${num.count}]]_img').src = [[${bs.imgsrc}]];
+				document.getElementById('bs[[${num.count}]]_txt').innerText = [[${bs.name}]];
+				document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
+		   [/]
+		   if (4-[[${#lists.size(bestseller1)}]] > 0){
+				for(i=4-[[${#lists.size(bestseller1)}]]+1;    i<5       ;i++){
+				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
+				document.getElementById('bs'+i+'_txt').innerText = '';
+				document.getElementById('bs'+i+'_price').innerText = '';
+				}
+		   }
+		}else if (bsid == 'bs2'){
+		   [# th:each="bs, num : ${bestseller2}"]
+				document.getElementById('bs[[${num.count}]]_img').src = [[${bs.imgsrc}]];
+				document.getElementById('bs[[${num.count}]]_txt').innerText = [[${bs.name}]];
+				document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
+		   [/]
+		   if (4-[[${#lists.size(bestseller2)}]] > 0){
+				for(i=5-(4-[[${#lists.size(bestseller2)}]]);    i<5       ;i++){
+				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
+				document.getElementById('bs'+i+'_txt').innerText = '';
+				document.getElementById('bs'+i+'_price').innerText = '';
+				}
+		   }
+		}else if (bsid == 'bs3' ){
+			   [# th:each="bs, num : ${bestseller3}"]
+				document.getElementById('bs[[${num.count}]]_img').src = [[${bs.imgsrc}]];
+				document.getElementById('bs[[${num.count}]]_txt').innerText = [[${bs.name}]];
+				document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
+		   [/]
+		  if (4-[[${#lists.size(bestseller3)}]] > 0){
+				for(i=5-(4-[[${#lists.size(bestseller3)}]]);    i<5       ;i++){
+				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
+				document.getElementById('bs'+i+'_txt').innerText = '';
+				document.getElementById('bs'+i+'_price').innerText = '';
+				}  
+		}else if (bsid == 'bs4' ){
+			   [# th:each="bs, num : ${bestseller4}"]
+					document.getElementById('bs[[${num.count}]]_img').src = [[${bs.imgsrc}]];
+					document.getElementById('bs[[${num.count}]]_txt').innerText = [[${bs.name}]];
+					document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
+			   [/]
+		  if (4-[[${#lists.size(bestseller4)}]] > 0){
+				for(i=5-(4-[[${#lists.size(bestseller4)}]]);    i<5       ;i++){
+				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
+				document.getElementById('bs'+i+'_txt').innerText = '';
+				document.getElementById('bs'+i+'_price').innerText = '';
+				} 
+		   }
 		
-		
-		
-		//replace('bs','bestseller')
-		
-		
-		
-		
+					
 	}
+
+
+
 
 </script>
 
@@ -326,3 +372,5 @@
 <!--https://gurtn.tistory.com/182    배경이미지 참고 링크(배경고정스크롤)-->
 <!--https://devbirdfeet.tistory.com/231  이미지 자르기-->
 <!--https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-one-element-is-hovered  csshover 예제-->
+
+
