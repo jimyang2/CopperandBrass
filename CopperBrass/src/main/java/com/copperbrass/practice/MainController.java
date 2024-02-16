@@ -3,9 +3,11 @@ package com.copperbrass.practice;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
@@ -41,5 +43,27 @@ public class MainController {
 		return "main";
 	}
 	
+	@GetMapping("/copperbrass/about")
+	public String aboutPage(Model model) {
+		
+
+		return "about";
+	}
+	
+	@GetMapping("/copperbrass/shop")
+	public String aboutShop(Model model, @RequestParam(value="page",defaultValue = "0") int page) {
+		Page<stocks> paging = this.stocksService.getList(page);
+		model.addAttribute("paging",paging);
+		return "shop";
+	}	
+		
+	@GetMapping("/copperbrass/contact")
+	public String aboutContact(Model model) {
+		List<stocks> stocks = this.stocksService.findAll();
+		
+		model.addAttribute("stocks",stocks);
+
+		return "contact";
+	}		
 	
 }

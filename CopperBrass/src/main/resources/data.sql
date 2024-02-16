@@ -10,3 +10,11 @@ Insert into stocks(id,name,category,price,imgsrc) values ('main2_2','Birthday Lo
 Insert into stocks(id,name,category,price,imgsrc) values ('main2_3','Black Boy Joy Birthday Card','Greeting Cards','$3.00','/img/main/bestseller/main2_3.JPG');
 
 
+Insert into stocks(id,name,category,price,imgsrc) values ('main3_1','When Life Hands You Lemons Gift Bag','Wrapping Paper/Bags','$12.00','/img/main/bestseller/main3_1.JPG');
+Insert into stocks(id,name,category,price,imgsrc) values ('main3_2','I am Every Woman Gift Bags','Wrapping Paper/Bags','$12.00','/img/main/bestseller/main3_2.JPG');
+
+
+Insert into stocks(id,name,category,price,imgsrc) values ('main4_1','Hello! Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_1.JPG');
+Insert into stocks(id,name,category,price,imgsrc) values ('main4_2','Me Time Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_2.JPG');
+Insert into stocks(id,name,category,price,imgsrc) values ('main4_3','Werk Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_3.JPG');
+Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');

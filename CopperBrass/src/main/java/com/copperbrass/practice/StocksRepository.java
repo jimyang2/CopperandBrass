@@ -2,6 +2,8 @@ package com.copperbrass.practice;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,6 +13,8 @@ public interface StocksRepository extends JpaRepository<stocks, Integer> {
 	List<stocks> findMainBestseller1();
 	
 	List<stocks> findByIdStartsWith(String id);
+	
+	Page<stocks> findAll(Pageable pageable);
 }
 
 
