@@ -51,9 +51,11 @@ public class MainController {
 	}
 	
 	@GetMapping("/copperbrass/shop")
-	public String aboutShop(Model model, @RequestParam(value="page",defaultValue = "0") int page) {
-		Page<stocks> paging = this.stocksService.getList(page);
-		model.addAttribute("paging",paging);
+	public String aboutShop(Model model) {
+		List<stocks> stocks = new ArrayList<>();
+		stocks = stocksService.find4ByNum();
+		model.addAttribute("firstStocks",stocks);
+		
 		return "shop";
 	}	
 		
@@ -65,5 +67,23 @@ public class MainController {
 
 		return "contact";
 	}		
+	
+	@GetMapping("/copperbrass/findAllProductList")
+	@ResponseBody
+	public List<stocks> findAllProductList(){
+		List<stocks> list=new ArrayList<>();
+		stocks t1 = new stocks();
+
+		t1.setId("999");
+		t1.setNum(999);
+		t1.setName("테스트");
+		t1.setCategory("카테고리");
+		t1.setPrice("가격");
+		t1.setImgsrc("/img/main/mail.JPG");
+		
+		
+		list.add(t1);
+		return list;// @ResponseBody에 의해 JSONArray 로 응답한다 
+	}	
 	
 }

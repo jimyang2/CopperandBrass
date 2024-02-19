@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>About | COPPER & BRASS</title>
 </head>
 
@@ -20,17 +21,27 @@
 <br><br>
 	<div class="total">
 		<div class="container">
-			<ul class="gallery" id='stockslist'>
-				<li><img src="/img/main/mail.JPG"></li>
-				<li><img src="/img/main/mail.JPG"></li>
-				<li><img src="/img/main/mail.JPG"></li>
-				<li><img src="/img/main/mail.JPG"></li>
-
+			<ul class="gallery" id='stockslist' >
+				<li th:each="firstStock : ${firstStocks}">
+					<img th:src="${firstStock.imgsrc}"><div th:text="${firstStock.name}"></div>
+				</li>
 			</ul>
+			
 		</div> 			
 	</div>
 <input type="button" id="btn_add" onclick="action_add()" value="추가"/>	
-	
+<table class="table table-bordered">
+	<thead>
+		<tr>		
+			<th>NO</th>
+			<th>NAME</th>
+			<th>MAKER</th>
+			<th>PRICE</th>
+		</tr>
+	</thead>
+	 <tbody id="productList">
+	</tbody>
+</table>	
 	<br><br><br>
 	<nav th:replace="~{footer :: FooterFragment}"></nav>	
 </body>
@@ -50,10 +61,39 @@
   }
 
 function action_add(){
-	var text_add = '<img src="/img/main/mail.JPG">'; //입력할 글씨
-	var ul_list = $("#stockslist"); //ul_list선언
-	ul_list.append("<li>"+text_add+"</li>"); //ul_list안쪽에 li추가
+
+
 }
+
+	$(function(){
+		$("#btn_add").click(function(){
+			
+			$.ajax({
+				type:"get",
+				url:"findAllProductList",
+				success:function(productList){
+					var text_add = '<img src="/img/main/mail.JPG">'; //입력할 글씨
+					var ul_list = $("#stockslist");
+					
+					//alert(productList.length);
+					let productInfo="";
+					for(let i=0;i<productList.length;i++){
+						productInfo+="<li>";
+						productInfo+="<img src="+productList[i].imgsrc+">";
+						productInfo+="</li>";
+					}
+					//$("#productList").html(productInfo);
+ul_list.append(productInfo); //ul_list안쪽에 li추가
+				}
+			});//ajax	
+		});//click			
+	});//ready
+	
+
+
+
+
+
 	
 </script>
 

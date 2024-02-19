@@ -1,0 +1,14 @@
+
+	
+ㄴshop.html 타임리프
+	$(function(){
+		$("#btn_add").click(function(){
+			$.ajax({
+				type:"get",
+				url:"findAllProductList",
+				success:function(productList){					
+					$("#stockslist").replaceWith(productList);
+				}
+			});//ajax	
+		});//click			
+	});//ready

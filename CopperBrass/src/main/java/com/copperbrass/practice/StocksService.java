@@ -23,12 +23,14 @@ public class StocksService {
 		return this.stocksRepository.findByIdStartsWith(id);
 	}	
 	
-	public Page<stocks> getList(int page){
-		Pageable pageable = PageRequest.of(page,10);
-		return this.stocksRepository.findAll(pageable);
-	}
-	
 	public List<stocks> findAll(){
 		return this.stocksRepository.findAll();
 	}
+	
+	public List<stocks> find4ByNum(int num){
+		return this.stocksRepository.find4stocksByNum(num);
+	}
+	public List<stocks> find4ByNum(){
+		return this.stocksRepository.find4stocksByNum();
+	}	
 }
