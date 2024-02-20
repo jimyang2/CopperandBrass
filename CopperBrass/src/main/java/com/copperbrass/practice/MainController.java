@@ -2,11 +2,13 @@ package com.copperbrass.practice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,8 +55,13 @@ public class MainController {
 	@GetMapping("/copperbrass/shop")
 	public String aboutShop(Model model) {
 		List<stocks> stocks = new ArrayList<>();
+		int lastStockNum = 0;
 		stocks = stocksService.find4ByNum();
 		model.addAttribute("firstStocks",stocks);
+		if (!stocks.isEmpty()) {
+			lastStockNum = stocks.get(stocks.size() - 1).getNum();
+		}
+		model.addAttribute("lastStockNum",lastStockNum);
 		
 		return "shop";
 	}	
@@ -71,19 +78,24 @@ public class MainController {
 	@GetMapping("/copperbrass/findAllProductList")
 	@ResponseBody
 	public List<stocks> findAllProductList(){
-		List<stocks> list=new ArrayList<>();
-		stocks t1 = new stocks();
+		List<stocks> addstocks = new ArrayList<>();
+		
+		//addstocks = this.stocksService.find4ByNum(6);
 
-		t1.setId("999");
-		t1.setNum(999);
-		t1.setName("테스트");
-		t1.setCategory("카테고리");
-		t1.setPrice("가격");
-		t1.setImgsrc("/img/main/mail.JPG");
 		
-		
-		list.add(t1);
-		return list;// @ResponseBody에 의해 JSONArray 로 응답한다 
+		return addstocks;// @ResponseBody에 의해 JSONArray 로 응답한다 
 	}	
+	
+	@PostMapping("/copperbrass/findAllProductList")
+	@ResponseBody
+	public List<stocks> findAllProductListP(@RequestParam Map<String, Object> vo){
+		List<stocks> addstocks = new ArrayList<>();
+		int lastStockNum = Integer.parseInt((String) vo.get("lastStockNum"));
+		System.out.println(lastStockNum);
+		addstocks = this.stocksService.find4ByNum(lastStockNum);
+
+		
+		return addstocks;// @ResponseBody에 의해 JSONArray 로 응답한다 
+	}		
 	
 }

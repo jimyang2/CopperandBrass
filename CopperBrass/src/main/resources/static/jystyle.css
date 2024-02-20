@@ -445,31 +445,57 @@ position: relative;
 	 width: 300px;
 	 height: 600px;
  }
+ .total .maincontent .onlinePub {
+	 position: absolute;
+	 height: 20%;
+
+ }
 
 
+/* Shop 페이지*/
 ul, li{margin:0;padding:0;list-style:none}
 
-.container{width:100%;max-width:1400px;margin:0 auto;overflow:hidden;}
+.container{width:100%;max-width:1600px;margin:0 auto;overflow:hidden;}
 
-.gallery{margin:50px -20px;box-sizing:border-box;}
-/* 
-.gallery:after{content:"";display:block;clear:both;visibility: hidden;} */
+.gallery{margin:50px -20px;box-sizing:border-box; text-align: center;}
+
+/* .gallery:after{content:"";display:block;clear:both;visibility: hidden;} */
 
 .gallery li{width:20%;float:left;box-sizing:border-box;padding:0 20px;margin:0 0 50px 0;}
 
-.gallery li img{width:100%;height:auto;}
+.gallery li img{width:100%; height:auto;}
+
+.shopstocksimg{width: 250px !important; height: 250px!important;}
+
+.shopstocksname{font-size: 13px;}
+
+.shopstocksprice{font-size:13px;font-family: '나눔스퀘어';}
+
+
+.stockContainer{width: 250px !important; height: 330px!important;position: relative;}
 
 @media (max-width:1200px){
-    .container .gallery li{width:25%;}
+    .container .gallery li{width:20%;}
 }
-@media (max-width:768px){
+@media (max-width:1000px){
     .container .gallery li{width:33.33333%;}
+    .container .gallery li img{width:33.33333%;}
 }
-@media (max-width:560px){
+@media (max-width:800px){
     .container .gallery li{width:50%;}
+    .container .gallery li img{width:33.33333%;}
 }
 @media (max-width:480px){
     .container .gallery li{width:100%;}
 }
-		   
+.shopBlackBtn{
+	height:45px;
+	width: 180px;
+    font-size: 15px;
+	border-radius: 10px;
+	color: white;
+	font-weight: bold;
+	background-color: black;
+
+}	   
 

@@ -19,29 +19,28 @@
 		</div>
 	</div>
 <br><br>
-	<div class="total">
+	<div>
 		<div class="container">
-			<ul class="gallery" id='stockslist' >
+			<ul class="gallery" id="stockslist">
 				<li th:each="firstStock : ${firstStocks}">
-					<img th:src="${firstStock.imgsrc}"><div th:text="${firstStock.name}"></div>
+					<div class="stockContainer">
+						<img class="shopstocksimg" th:src="${firstStock.imgsrc}">
+						<div class="shopstocksname"th:text="${firstStock.name}"></div>
+						<hr style="width:20%;height:1px;border:none;background-color:black;margin-top: 4px;margin-bottom: 8px;">
+						<div class="shopstocksprice"th:text="${firstStock.price}"></div>
+					</div>
 				</li>
 			</ul>
-			
 		</div> 			
 	</div>
-<input type="button" id="btn_add" onclick="action_add()" value="추가"/>	
-<table class="table table-bordered">
-	<thead>
-		<tr>		
-			<th>NO</th>
-			<th>NAME</th>
-			<th>MAKER</th>
-			<th>PRICE</th>
-		</tr>
-	</thead>
-	 <tbody id="productList">
-	</tbody>
-</table>	
+	
+
+	<div class="total">
+		<div class="maincontent">
+			<input class="shopBlackBtn" type="button" id="btn_add"  value="load more"/>	
+		</div>
+	</div>
+
 	<br><br><br>
 	<nav th:replace="~{footer :: FooterFragment}"></nav>	
 </body>
@@ -60,30 +59,47 @@
     cell2.innerHTML = new Date().toUTCString();
   }
 
-function action_add(){
+var lastStockNum = [[${lastStockNum}]];
 
-
+console.log(lastStockNum);
+console.log([[${#lists.size(firstStocks)}]]);
+if (lastStockNum != 0 || [[${#lists.size(firstStocks)}]] <11){
+				
 }
+
+
 
 	$(function(){
 		$("#btn_add").click(function(){
-			
 			$.ajax({
-				type:"get",
+				type:"POST",
 				url:"findAllProductList",
+				data:{"lastStockNum":lastStockNum},
 				success:function(productList){
-					var text_add = '<img src="/img/main/mail.JPG">'; //입력할 글씨
 					var ul_list = $("#stockslist");
 					
 					//alert(productList.length);
 					let productInfo="";
 					for(let i=0;i<productList.length;i++){
+
 						productInfo+="<li>";
-						productInfo+="<img src="+productList[i].imgsrc+">";
+						productInfo+="<div class='stockContainer'>";	
+						productInfo+="<img class='shopstocksimg' src="+productList[i].imgsrc+">";
+						productInfo+="<div class='shopstocksname'>"+productList[i].name+"</div>";
+						
+						productInfo+='<hr style="width:20%;height:1px;border:none;background-color:black;margin-top: 4px;margin-bottom: 8px;">';
+						productInfo+="<div class='shopstocksprice'>"+productList[i].price+"</div>";
+						productInfo+="</div>";
 						productInfo+="</li>";
+						
+						if(i==productList.length-1){
+							lastStockNum = productList[i].num;
+							console.log(productInfo);
+						}
 					}
 					//$("#productList").html(productInfo);
-ul_list.append(productInfo); //ul_list안쪽에 li추가
+					//ul_list안쪽에 li추가
+					ul_list.append(productInfo);
 				}
 			});//ajax	
 		});//click			
