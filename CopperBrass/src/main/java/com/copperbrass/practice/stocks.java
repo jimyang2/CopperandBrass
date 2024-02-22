@@ -29,4 +29,8 @@ public class stocks {
 	
 	private String imgsrc;
 	
+	private String details;
+	
+	private Integer stock; 
+	
 }

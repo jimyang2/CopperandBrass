@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -96,6 +97,23 @@ public class MainController {
 
 		
 		return addstocks;// @ResponseBody에 의해 JSONArray 로 응답한다 
-	}		
+	}	
+	
+	@GetMapping("/copperbrass/shop-details/{number}")
+	public String stockDetails(Model model, @PathVariable("number") int number){
+		stocks stock = new stocks();
+		
+		stock = this.stocksService.findByNum(number);
+		model.addAttribute("stock",stock);
+		
+		return "shop-details";// @ResponseBody에 의해 JSONArray 로 응답한다 
+	}	
+	
+	@GetMapping("/copperbrass/policies-shipping")
+	public String aboutpoiciesShipping(Model model) {
+		
+
+		return "policies-shipping";
+	}	
 	
 }

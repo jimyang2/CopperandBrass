@@ -33,4 +33,7 @@ public class StocksService {
 	public List<stocks> find4ByNum(){
 		return this.stocksRepository.find4stocksByNum();
 	}	
+	public stocks findByNum(int num) {
+		return this.stocksRepository.findByNum(num);
+	}
 }

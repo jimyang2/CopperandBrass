@@ -20,6 +20,8 @@ public interface StocksRepository extends JpaRepository<stocks, Integer> {
 	@Query("SELECT s FROM stocks s order by s.num desc limit 4")
 	List<stocks> find4stocksByNum();	
 	
+	stocks findByNum(int num);
+	
 }
 
 
