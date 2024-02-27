@@ -547,7 +547,7 @@ ul.myMenu > li ul.submenu > li:hover { background:#fff; }
     height: 100%;
 	background-color: white;
 	z-index: 999999;
-	display: block;
+	display: none;
 	text-align: center;
 	position: fixed;
 	

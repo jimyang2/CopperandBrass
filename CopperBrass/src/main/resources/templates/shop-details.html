@@ -123,6 +123,7 @@
 	
 
 	function deleteCookie(name) {
+		name= name.replace(/^\s+|\s+$/g, ''); 
 		document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 		const deleteParent =  document.querySelector(".cartSimpleItems");
 		
@@ -131,24 +132,33 @@
 		console.log(document.cookie);
 	}
 	
+	const delCookie = (name) => {
+	  // 쿠키 삭제는? 이미 한참 지나간 시간을 입력해버림으로써 쿠키를 삭제시킨다.
+	  // document.cookie = 'user-id=; expires=Sat, 01 Jan 1972 00:00:00 GMT'
+		name= name.replace(/^\s+|\s+$/g, ''); 
+		name = 'cartitem: '+name;
+	  	document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+	};	
 	
-// 쿠키 전체 삭제하기
-function allDelCookies () {
-	alert("here");
-  const cookies = document.cookie.split('; '); // 배열로 반환
-  console.log(cookies);
-  const expiration = 'Sat, 01 Jan 1972 00:00:00 GMT';
+	
 
-  // 반목문 순회하면서 쿠키 전체 삭제
-  if (!document.cookie) {
-    alert('삭제할 쿠키가 없습니다.');
-  } else {
-    for (i = 0; i < cookies.length; i++) {
-      document.cookie = cookies[i].split('=')[0] + '=; expires=' + expiration;
-    }
-    alert('쿠키 전부 삭제완료!!');
-  }
-};	
+	// 쿠키 전체 삭제하기
+	function allDelCookies () {
+
+	  const cookies = document.cookie.split('; '); // 배열로 반환
+	  console.log(cookies);
+	  const expiration = 'Sat, 01 Jan 1972 00:00:00 GMT';
+	
+	  // 반목문 순회하면서 쿠키 전체 삭제
+	  if (!document.cookie) {
+	    alert('삭제할 쿠키가 없습니다.');
+	  } else {
+	    for (i = 0; i < cookies.length; i++) {
+	      document.cookie = cookies[i].split('=')[0] + '=; expires=' + expiration;
+	    }
+	    alert('쿠키 전부 삭제완료!!');
+	  }
+	};	
 
 
 	function getCookies(){
@@ -213,11 +223,14 @@ getCookies();
 
 
 	$(document).on('click', '[id^=DelItemId]', function(event) {
+		//cartSimpleItems
 	    var id_check = $(this).prev().text();
-	    id_check = id_check.substr(0,id_check.indexOf('$'));
-	    deleteCookie(id_check);
-	    allDelCookies();
+		$(this).parent().parent().empty();
+
+		console.log(id_check.substr(0,id_check.indexOf('$')));
+	    delCookie(id_check.substr(0,id_check.indexOf('$')));
 	    getCookies();
+
 	    
 	});
 	
