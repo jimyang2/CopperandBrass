@@ -7,116 +7,58 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
-	<title>About | COPPER & BRASS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>		
+	<title>View-Cart | COPPER & BRASS</title>
 </head>
 
 <body>
 	<nav th:replace="~{header :: navbarFragment}"></nav>
-	
-
+	<div class="total">
+		<div class=" colorheader" >
+		View-Cart
+		</div>
+	</div>
 <br><br>
 
-	<div class="total">
-		<div class="maincontent">
-			<div class="detailContainer">
-				<div class="stocksDetailimgCon">
-					<img class="stocksDetailimg" th:src="${stock.imgsrc}" />
-				</div>
-				<div class="stocksDetailtext">
-					<div class="name" th:text="${stock.name}"></div>
-					<div class="price" th:text="${stock.price}"></div>
-					<div class="detail">or 4 interest-free payments of $5.50 wit afterpay</div>
-					<br>
-					<div class="detail">Quantity</div>
-					<input type="number" id="quantity" style="width: 50px;height: 35px;" min="1" value="1">
-					<br><br>
-					<button class="blueBtn" id="addtocart" >Add to Cart</button>
-				</div>
-			</div>
-		</div>
-
-	<!-- 모달창? -->
-	<nav th:replace="~{footer :: FooterFragment}"></nav>	
-	<div id="modalContainer" class="hidden"></div>
-	
-	
-	</div>
-	
-	<div class="cart_modal">
-		<div class="cart">Cart</div>
+	<div class="VCmaincontent">
+		<div class="">My Cart</div>
 		<br>
-		<button class="blueBtn" id="viewCart" >View Cart</button>
-		<br>
-		<div class="cartSimpleItems">
 
-	
-			<!--<div class="cartItmenList">
-				
-				<div class="cartItmenListImg">
-					<img class="cartItmenImg" th:src="${stock.imgsrc}" />
-				</div>
-				<div class="cartItmenListtext">
-					[[${stock.name}]]<br>
-					<b>[[${stock.price}]]<b><br>
-					<input type="number" style="width: 50px;height: 20px;" value="3"/>
-				</div>
-				<div class="deleteItem">x</div>
-			</div> -->
-			
-					
+		<br>
+		<div class="cartSimpleItemss">
+
 		</div>
-		<div class="subtotal">
+		<div class="test1">
 			Subtotal
 			<br>
 			
 			<span id="subtotalPrice" class="subtotalPrice">$</span>
-			<hr style="width:100%;height:1px;border:none;background-color:lightgray;">
-			<button class="blueBtn" id="viewCartBig"  >View Cart</button>
+
+
 		</div>
 
+		
 	</div>	
-	
-	
 
 
 	
-	<br><br><br>
-	
+
+	<nav th:replace="~{footer :: FooterFragment}"></nav>	
 </body>
 
 <script src="https: //code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script> 
-
 <script th:inline="javascript">
-	const modal = document.querySelector('.cart_modal');
-   	const btnOpenPopup = document.querySelector('#addtocart');
-   	const quantity = document.getElementById('quantity');
+
 	const modalbg = document.getElementById('modalContainer');
 
-   /*모달창 열기*/
-    btnOpenPopup.addEventListener('click', () => {
-        modal.style.display = 'block';
-        
-		modalbg.classList.remove('hidden');
-
-		deleteCookie('cartitem: ' +[[${stock.name}]]);
-        setCookie([[${stock.name}]],[[${stock.imgsrc}]],quantity.value,[[${stock.price}]],1);
-		
-	}); 
-	
-	modalbg.addEventListener('click', () =>{
-		modal.style.display = 'none';
-		modalbg.classList.add('hidden');
-	});
-	
-	
+  	
 	function setCookie(cookie_name, path, quantity, price, days) {
 	  var exdate = new Date();
 	  exdate.setDate(exdate.getDate() + days);
 	  var value = path+':::'+quantity+'^^^'+price;
 	  // 설정 일수만큼 현재시간에 만료값으로 지정
 
-	  document.cookie = 'cartitem: ' +cookie_name + '=' + value+';path=/; ';
+	  document.cookie = 'cartitem: ' +cookie_name + '=' + value;
 	  
 	  getCookies();
 	}
@@ -125,7 +67,7 @@
 	function deleteCookie(name) {
 		name= name.replace(/^\s+|\s+$/g, ''); 
 		document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-		const deleteParent =  document.querySelector(".cartSimpleItems");
+		const deleteParent =  document.querySelector(".cartSimpleItemss");
 		
 		deleteParent.innerHTML=''
 		//쿠키 확인법
@@ -137,10 +79,10 @@
 	  // document.cookie = 'user-id=; expires=Sat, 01 Jan 1972 00:00:00 GMT'
 		name= name.replace(/^\s+|\s+$/g, ''); 
 		name = 'cartitem: '+name;
-	  	document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;path=/;';
+	  	document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 	};	
 	
-	console.log(document.cookie);
+	
 
 	// 쿠키 전체 삭제하기
 	function allDelCookies () {
@@ -162,8 +104,9 @@
 
 
 	function getCookies(){
-		let parent = document.querySelector(".cartSimpleItems");
+		let parent = document.querySelector(".cartSimpleItemss");
 		let addCartItems = ""
+		
 		var x, path, quan, pri;
 	  	var val = document.cookie.split(';');
 		var subtotalPrice = 0;
@@ -202,17 +145,14 @@
 				}	
 				
 		}
+		console.log(addCartItems);
 		subtotalId.innerText='$ '+subtotalPrice;
 		parent.insertAdjacentHTML('beforeend', addCartItems);
 	}
 	
 
 getCookies();
-
-
-
-
-
+console.log("쿠키값 : "+document.cookie);
 
 	/*모달창 닫기 - 실패
 	$(document).mouseup(function (e){
@@ -239,7 +179,6 @@ getCookies();
 
 
 </script>
-
 
 </html>
 

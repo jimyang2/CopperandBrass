@@ -74,6 +74,18 @@ body, html {
 .header .navs  .nav:hover {
  	 color : #EDC06F;
 }
+.header .navs  .nav:hover .submenu {
+ 	 color : black;
+}
+ul, ol, li { list-style:none; margin:0; padding:0; }
+   
+ul.myMenu {}
+ul.myMenu > li { display:inline-block; width:80px; padding:5px 3px;  text-align:center; position:relative;z-index: 100000;  }
+ul.myMenu > li:hover { background:#fff; }
+ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
+ul.myMenu > li:hover ul.submenu { display:block; }
+ul.myMenu > li ul.submenu > li { display:inline-block; padding:5px 10px; background-color: white; font-size : 18px;}
+ul.myMenu > li ul.submenu > li:hover { color: EDC06F; }
 
 
 /*header (끝)*/
@@ -146,7 +158,7 @@ table{
 	justify-content: center; /* 자식 요소를 가로(수평) 기준으로 가운데 정렬시킴 */
 }
 @media screen and (min-width: 1200px) {
-.total .maincontent{
+.maincontent{
 	width: 1200px;
 	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
 	display: flex;
@@ -521,16 +533,6 @@ ul, li{margin:0;padding:0;list-style:none}
 
 
 
-ul, ol, li { list-style:none; margin:0; padding:0; }
-   
-ul.myMenu {}
-ul.myMenu > li { display:inline-block; width:80px; padding:5px 10px; background:#eee; border:1px solid #eee; 
-text-align:center; position:relative; }
-ul.myMenu > li:hover { background:#fff; }
-ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
-ul.myMenu > li:hover ul.submenu { display:block; }
-ul.myMenu > li ul.submenu > li { display:inline-block; width:80px; padding:5px 10px; background:#eee; border:1px solid #eee; text-align:center; position:relative;z-index: 100;}
-ul.myMenu > li ul.submenu > li:hover { background:#fff; }
 
 /* detail-stocks 페이지 (시작)*/
 .total .maincontent .detailContainer{
@@ -706,5 +708,23 @@ ul.myMenu > li ul.submenu > li:hover { background:#fff; }
   display: none;
 }
 
+.VCmaincontent{
+	position: relative;
+	width: 800px;
+	height: 700px;
+	background-color: white;
+	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
 
+}
+.cartSimpleItemss{
+	position: absolute;
+	width: 600px;
+
+}
+.test1{
+	position: absolute;
+	width: 200px;
+	left: 75%;
+	
+}
 

@@ -14,13 +14,21 @@ public interface StocksRepository extends JpaRepository<stocks, Integer> {
 	
 	List<stocks> findByIdStartsWith(String id);
 	
-	@Query("SELECT s FROM stocks s where s.num < ?1 order by s.num desc limit 4")
-	List<stocks> find4stocksByNum(int num);
-	
 	@Query("SELECT s FROM stocks s order by s.num desc limit 4")
 	List<stocks> find4stocksByNum();	
 	
+	@Query("SELECT s FROM stocks s where s.num < ?1 order by s.num desc limit 4")
+	List<stocks> find4stocksByNum(int num);
+	
+	@Query("SELECT s FROM stocks s where s.category = ?1 order by s.num desc limit 4")
+	List<stocks> find4stocksByNum(String category);	
+	
+	@Query("SELECT s FROM stocks s where s.category = ?1 and s.num < ?2 order by s.num desc limit 4")
+	List<stocks> find4stocksByNum(String category, int num);	
+	
 	stocks findByNum(int num);
+	
+
 	
 }
 

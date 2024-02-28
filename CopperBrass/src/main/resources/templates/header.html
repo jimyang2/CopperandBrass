@@ -1,28 +1,32 @@
 <nav th:fragment="navbarFragment" >
-	<!-- <ul class="myMenu">
-		<li class="menu1">메뉴 1</li>
-		<li class="menu2">
-			메뉴 2
-			<ul class="menu2_s submenu">
-				<li>메뉴 2-1</li>
-				<li>메뉴 2-2</li>
-				<li>메뉴 2-3</li>
-			</ul>   
-		</li>
-		<li class="menu3">
-			메뉴 3
-			<ul class="menu3_s submenu">
-				<li>메뉴 3-1</li>
-				<li>메뉴 3-2</li>
-				<li>메뉴 3-3</li>
-			</ul>   
-		</li>
-		<li class="menu4">메뉴 4</li>
-		<li class="menu5">메뉴 5</li>   
-	</ul> -->
-	
-	
+
 	<div class="header">
+	<span class="logo"><img th:src="@{/img/CB로고.jpg}"  alt="cblog" ></span>	
+	 <ul class="myMenu navs">
+		<li><a class="nav yellow" th:href="@{|/copperbrass|}">Home</a></li>
+		<li>
+			<a class="nav" th:href="@{|/copperbrass/about|}">About</a>
+			<ul class="menu2_s submenu">
+				<li><a th:href="@{|/copperbrass/about|}" >Abouttheowner</a></li>
+
+			</ul>   
+		</li>
+		<li>
+			<a class="nav" th:href="@{|/copperbrass/shop|}">Shop</a>
+			<ul class="menu3_s submenu">
+				<li><a th:href="@{|/copperbrass/shop?num=Notebook|}" >Notebook</a></li>
+				<li><a th:href="@{|/copperbrass/shop?num=Greeting Cards|}" >Greeting Cards</a></li>
+				<li><a th:href="@{|/copperbrass/shop?num=Wrapping Paper/Bags|}" >Wrapping Paper/Bags</a></li>
+				<li><a th:href="@{|/copperbrass/shop?num=Sticky Notes|}" >Sticky Notes</a></li>
+			</ul>   
+		</li>
+		<li><a class="nav" th:href="@{|/copperbrass|}">Contact</a></li>
+		<li><a class="nav" th:href="@{|/copperbrass/policies-shipping|}">Policies&Shipping</a></li>   
+	</ul>
+	</div>
+		
+	
+	<!--<div class="header">
 	<span class="logo"><img th:src="@{/img/CB로고.jpg}"  alt="cblog" ></span>	
 		<div class="navs">	
 			<a class="nav yellow" th:href="@{|/copperbrass|}">Home</a>
@@ -31,7 +35,7 @@
 			<a class="nav" th:href="@{|/copperbrass|}">Contact</a>
 			<a class="nav" th:href="@{|/copperbrass/policies-shipping|}">Policies&Shipping</a>
 		</div>
-	</div>
+	</div> -->
 	
 
 </div>

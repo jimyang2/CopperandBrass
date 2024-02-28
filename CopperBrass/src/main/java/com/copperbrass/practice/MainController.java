@@ -54,14 +54,23 @@ public class MainController {
 	}
 	
 	@GetMapping("/copperbrass/shop")
-	public String aboutShop(Model model) {
+	public String aboutShop(Model model, @RequestParam(value="num", defaultValue="") String category) {
+		
 		List<stocks> stocks = new ArrayList<>();
 		int lastStockNum = 0;
-		stocks = stocksService.find4ByNum();
+		
+		if(category.isBlank()) {
+			stocks = stocksService.find4ByNum();
+		}else {
+			stocks = stocksService.find4ByNum(category);
+		}
+		
 		model.addAttribute("firstStocks",stocks);
+		
 		if (!stocks.isEmpty()) {
 			lastStockNum = stocks.get(stocks.size() - 1).getNum();
 		}
+		
 		model.addAttribute("lastStockNum",lastStockNum);
 		
 		return "shop";
@@ -90,10 +99,18 @@ public class MainController {
 	@PostMapping("/copperbrass/findAllProductList")
 	@ResponseBody
 	public List<stocks> findAllProductListP(@RequestParam Map<String, Object> vo){
+		
 		List<stocks> addstocks = new ArrayList<>();
 		int lastStockNum = Integer.parseInt((String) vo.get("lastStockNum"));
-		System.out.println(lastStockNum);
-		addstocks = this.stocksService.find4ByNum(lastStockNum);
+		String category = (String) vo.get("category");
+		
+		System.out.println("findAllProductListP함수");
+		if (category.isBlank()) {
+			addstocks = this.stocksService.find4ByNum(lastStockNum);
+		}else {
+			addstocks = this.stocksService.find4ByNum(category,lastStockNum);
+		}
+		
 
 		
 		return addstocks;// @ResponseBody에 의해 JSONArray 로 응답한다 
@@ -116,4 +133,10 @@ public class MainController {
 		return "policies-shipping";
 	}	
 	
+	@GetMapping("/copperbrass/view-cart")
+	public String aboutViewCart(Model model) {
+		
+
+		return "view-cart";
+	}		
 }
