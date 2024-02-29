@@ -426,6 +426,7 @@ position: relative;
 	 color: dimgray;
 	 height: 300px;
 	 position: relative;
+	 bottom:0;
  }
  .footer2{
 	 background-color: snow;
@@ -648,9 +649,9 @@ ul, li{margin:0;padding:0;list-style:none}
 
 .cartItmenList{
 	padding-top: 10px;
-	padding-left: 10px;
+
 	padding-bottom: 10px;
-	padding-right: 10px;
+
 	width: 100%;
 	display:inline-block; 
 	
@@ -658,6 +659,11 @@ ul, li{margin:0;padding:0;list-style:none}
 .cartItmenListImg{
 	float: left;
 	width: 30%;
+	height: 100%;
+}
+.cartItmenListImg2{
+	float: left;
+	width: 20%;
 	height: 100%;
 }
 .cartItmenImg{
@@ -675,13 +681,33 @@ ul, li{margin:0;padding:0;list-style:none}
 	line-height: 150%;
 	
 }
+.cartItmenListtext2{
+	float: left;
+	width: 40%;
+	height: 100%;
+	text-align: left;
+	font-size: 16px;
+	font-family: '나눔스퀘어';	
+	padding-left: 4px;
+	line-height: 150%;
+	
+}
+.cartItmenListtext3{
+	float: left;
+	width: 12%;
+	height: 100%;
+	font-size: 16px;
+	font-family: '나눔스퀘어';	
+	padding-left: 4px;
+	line-height: 150%;
+	
+}
 
 
 .deleteItem{
 	float: left;
 	width: 5%;
-	height: 100%;
-	display: none;
+	display: block;
 }
 
 .cartItmenList:hover .deleteItem{
@@ -709,22 +735,28 @@ ul, li{margin:0;padding:0;list-style:none}
 }
 
 .VCmaincontent{
-	position: relative;
-	width: 800px;
-	height: 700px;
+	display: flex;
+	width: 1000px;
+	text-align: center;
+	justify-content: center;
 	background-color: white;
 	margin:0 auto; /* div div 안에 가운데 정렬 자동으로 해줌*/
+	font-size: 20px;
+	font-weight: bold;
+	font-family: '나눔스퀘어';	
 
 }
 .cartSimpleItemss{
-	position: absolute;
-	width: 600px;
+	float: left;
+	width: 65%;
 
 }
 .test1{
-	position: absolute;
-	width: 200px;
-	left: 75%;
+	text-align: left;
+	width: 20%;
+	float: left;
+	font-size: 16px;
+	font-family: '나눔스퀘어';	
 	
 }
 

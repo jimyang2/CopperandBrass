@@ -127,7 +127,7 @@
 		document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 		const deleteParent =  document.querySelector(".cartSimpleItems");
 		
-		deleteParent.innerHTML=''
+		deleteParent.innerHTML='';
 		//쿠키 확인법
 		console.log(document.cookie);
 	}
@@ -225,7 +225,7 @@ getCookies();
 	$(document).on('click', '[id^=DelItemId]', function(event) {
 		//cartSimpleItems
 	    var id_check = $(this).prev().text();
-		$(this).parent().parent().empty();
+	    alert($(this).parent().parent().text());
 
 		console.log(id_check.substr(0,id_check.indexOf('$')));
 	    delCookie(id_check.substr(0,id_check.indexOf('$')));
