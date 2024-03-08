@@ -137,9 +137,9 @@
 				addCartItems += '<img class="cartItmenImg" src="'+path+'" />';
 				addCartItems += '</div>';
 				addCartItems += '<div class="cartItmenListtext2">';
-				addCartItems += ''+x+'<br>'+pri+'</div>';
-				addCartItems += '<div class="cartItmenListtext3"><input type="number" style="width: 50px;height: 20px;" value="'+quan+'" min="1"/></div>';				
-				addCartItems += '<div class="cartItmenListtext3">';
+				addCartItems += ''+x+'<br> <div id="Pprice'+i+'"> '+pri+'</div></div>';
+				addCartItems += '<div class="cartItmenListtext3"><input type="number" style="width: 50px;height: 20px;" id= "quan'+i+'" value="'+quan+'" min="1"/></div>';				
+				addCartItems += '<div class="cartItmenListtext3" id= "Ptotalprice'+i+'">';
 				addCartItems += '<b>'+pri+'</b></div>';
 				
 				addCartItems += '<div class="deleteItem" id="DelItemId'+i+'">';
@@ -157,6 +157,7 @@
 		subtotalId.innerText='$ '+subtotalPrice;
 		parent.insertAdjacentHTML('beforeend', addCartItems);
 	}
+	
 	
 
 getCookies();
@@ -179,6 +180,21 @@ console.log("쿠키값 : "+document.cookie);
 		console.log(id_check.substr(0,id_check.indexOf('$')));
 	    delCookie(id_check.substr(0,id_check.indexOf('$')));
 	    getCookies();
+
+	    
+	});
+	
+	$(document).on('click', '[id^="quan"]', function(event) {
+		var quanId = $(this).attr('id');
+		var targetNum = quanId.split('quan')[1];
+		var POprice = $("#Pprice0").text().split('$')[1];
+		var PXprice = parseFloat(parseFloat(POprice).toFixed(2) * $(this).val()).toFixed(2);
+		
+		var PTprice = $('#Ptotalprice'+targetNum).text("$"+PXprice);
+		
+		
+		//$('[id^="Ptotalprice"]')
+		//$("Ptotalprice"+targetNum).attr("")
 
 	    
 	});
