@@ -77,7 +77,7 @@
 								<div class="temp">
 									<img class="mainbox" id="mainbox1img" th:src="@{/img/main/mainbox2.JPG}"width="200px" />
 									<div class="main_image_text" id="mainbox1txt">Stickers</div>
-									<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
+									<a th:href="@{|/copperbrass/shop?num=Sticky Notes|}"><input type="button" class="mainbox_shop_btn" value="Shop now" ></input></a>
 								</div>
 							</div>
 						</div>
@@ -89,7 +89,9 @@
 								<div class="temp">
 									<img class="mainbox" id="mainbox2img" th:src="@{/img/main/mainbox3.JPG}" width="200px" />
 									<div class="main_image_text" id="mainbox2txt">Full Sized<br>Notebooks</div>
-									<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
+									<a th:href="@{|/copperbrass/shop?num=Notebook|}">
+										<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -101,7 +103,9 @@
 								<div class="temp">
 									<img class="mainbox" id="mainbox3img" th:src="@{/img/main/mainbox5.JPG}" width="200px" />
 									<div class="main_image_text" id="mainbox3txt">Notebooks</div>
-									<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
+									<a th:href="@{|/copperbrass/shop?num=Notebook|}">
+										<input type="button" class="mainbox_shop_btn" value="Shop now"></input>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -243,7 +247,7 @@
 				</div>
 			</div>
 			<div class="newslettersend">
-				<table width="90%">
+				<table width="50%">
 					<colgroup>
 						<col width="5%"/>
 						<col width="35%"/>
@@ -312,7 +316,7 @@
 				document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
 		   [/]
 		   if (4-[[${#lists.size(bestseller1)}]] > 0){
-				for(i=[[${#lists.size(bestseller1)}]]+1;    i<5       ;i++){
+				for(i=[[${#lists.size(bestseller1)}]]+1; i<5 ;i++){
 				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
 				document.getElementById('bs'+i+'_txt').innerText = '';
 				document.getElementById('bs'+i+'_price').innerText = '';
@@ -325,7 +329,7 @@
 				document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
 		   [/]
 		   if (4-[[${#lists.size(bestseller2)}]] > 0){
-				for(i=[[${#lists.size(bestseller2)}]]+1;    i<5       ;i++){
+				for(i=[[${#lists.size(bestseller2)}]]+1; i<5; i++){
 				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
 				document.getElementById('bs'+i+'_txt').innerText = '';
 				document.getElementById('bs'+i+'_price').innerText = '';
@@ -338,7 +342,7 @@
 				document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
 		  		[/]
 		  if (4-[[${#lists.size(bestseller3)}]] > 0){
-				for(i=[[${#lists.size(bestseller3)}]]+1;    i<5       ;i++){
+				for(i=[[${#lists.size(bestseller3)}]]+1; i<5; i++){
 				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
 				document.getElementById('bs'+i+'_txt').innerText = '';
 				document.getElementById('bs'+i+'_price').innerText = '';
@@ -351,7 +355,7 @@
 					document.getElementById('bs[[${num.count}]]_price').innerText = [[${bs.price}]];
 			   [/]
 		  if (4-[[${#lists.size(bestseller4)}]] > 0){
-				for(i=[[${#lists.size(bestseller4)}]]+1;    i<5       ;i++){
+				for(i=[[${#lists.size(bestseller4)}]]+1; i<5; i++){
 				document.getElementById('bs'+i+'_img').src = "/img/main/mail.JPG";
 				document.getElementById('bs'+i+'_txt').innerText = '';
 				document.getElementById('bs'+i+'_price').innerText = '';
