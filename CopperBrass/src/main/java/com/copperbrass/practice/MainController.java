@@ -1,5 +1,6 @@
 package com.copperbrass.practice;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +22,10 @@ public class MainController {
 
 	final private StocksService stocksService;
 	
+
+	
 	@GetMapping("/copperbrass")
-	public String hello(Model model) {
+	public String hello(Model model, Principal principal) {
 		
 		List<stocks> bestseller1 = new ArrayList<>();
 		bestseller1 = this.stocksService.mainBestseller1();
@@ -42,6 +45,13 @@ public class MainController {
 		model.addAttribute("bestseller3",bestseller3);
 		model.addAttribute("bestseller4",bestseller4);		
 		model.addAttribute("test","/img/main/bestseller/main_bundle.JPG");
+		
+		if(principal != null) {
+			model.addAttribute("principal",principal);
+			System.out.println("미야옹");
+			System.out.println(principal);
+		}
+		
 		
 		return "main";
 	}
