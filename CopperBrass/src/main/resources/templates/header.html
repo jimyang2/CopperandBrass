@@ -23,8 +23,18 @@
 		<li><a class="nav" th:href="@{|/copperbrass|}">Contact</a></li>
 		<li><a class="nav" th:href="@{|/copperbrass/policies-shipping|}">Policies&Shipping</a></li>   
 	</ul>
+	<span sec:authorize="isAuthenticated()">
+		<span class="headeruser" th:if="${principal != null}" th:text="${principal.Principal.username}"></span>
+		<span class="headeruser" th:if="${principal != null}" >님 안녕하세요</span>
+		<span class="headeruser" th:if="${principal != null}" th:text="${principal.Authorities}"></span>
+		<input type="button" value="로그아웃" onClick="location.href='/user/logout'">
+	</span>
+	<span sec:authorize="isAnonymous()">
+		<input type="button" value="로그인" onClick="location.href='/user/login'">
+		<input type="button" value="회원가입" onClick="location.href='/user/signup'">
+	</span>
 	</div>
-		
+ 		
 	
 	<!--<div class="header">
 	<span class="logo"><img th:src="@{/img/CB로고.jpg}"  alt="cblog" ></span>	
