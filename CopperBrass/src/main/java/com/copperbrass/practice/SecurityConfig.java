@@ -20,6 +20,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {		
     	//내부적으로 SecurityFilterChain 클래스가 동작하여 모든 요청 URL에 이 클래스가 필터로 적용되어 URL별로 특별한 설정을 할 수 있음
         http
+        
             .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                 .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())			//인증되지 않은 모든페이지의 요청을 허락, 로그인 X 페이지 요청 허락
             .csrf((csrf) -> csrf												///h2-console/로 시작하는 모든 URL은 CSRF 검증을 하지 않는다
@@ -33,7 +34,8 @@ public class SecurityConfig {
             .logout((logout) -> logout
                     .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
                     .logoutSuccessUrl("/copperbrass")
-                    .invalidateHttpSession(true))            
+                    .invalidateHttpSession(true))    
+            
         ;
         return http.build();
     }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" th:href="@{/jystyle.css}">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About | COPPER & BRASS</title>
+</head>
+
+<body>
+	<nav th:replace="~{header :: navbarFragment}"></nav>
+	<div class="total">
+		<div class=" colorheader" >
+		Register Item
+		</div>
+	</div>
+<br><br>
+	<form method="post" name="board_form" th:action="@{/copperbrass/upload}" enctype="multipart/form-data">
+		<div class="total">
+			<table class="registertable" >
+				<tr>
+					<td colspan="2">제품명 : <input type="text" id="title" style="width: 80%;"></td>
+		
+				</tr>
+				
+				<tr>
+					<td> 카테고리 : 			
+						 <select name="category" style="width: 60%;">
+						  <option value="Notebook">Notebook</option>
+						  <option value="Greeting Cards">Greeting Cards</option>
+						  <option value="Wrapping Paper/Bags" selected="selected">Wrapping Paper/Bags</option>
+						  <option value="Sticky Notes" selected="selected">Sticky Notes</option>
+						</select>
+					</td>
+					<td>가격 : <input type="text" id="price"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">이미지 : <input type="file" name="file" id="file-element" accept="image/*" required multiple></td> 
+				</tr>
+					
+				<tr>
+					<td colspan="2">
+						<textarea id="explanation" rows="10" cols="100"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="등록하기" ></td>
+				</tr>
+			</table>
+			
+		</div>
+		
+	</form>
+
+	<br><br><br>
+	<nav th:replace="~{footer :: FooterFragment}"></nav>	
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script th:inline="javascript">
+
+	function send(){
+		
+		const regexp = /^[0-9]*.\d{2}$/;
+		
+		var f = document.board_form;
+		
+//		if($("#title").val() == ""){alert("제품명을 입력하세요"); return false;}
+	//	if($("#price").val() == ""){alert("가격을 입력하세요"); return false;}
+	//	if(!regexp.test($("#price").val())){alert("소수점 둘째자리까지 입력해주세요."); return false;}
+		
+		
+		
+		f.submit();
+		
+		
+	}
+</script>
+
+</html>
+
+
+

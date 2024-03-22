@@ -1,7 +1,12 @@
 해야하는 것
 1. 반응형 어떻게 하는지 보기 특히 shop
-2. 스타일도 선택할 수 있게 하기(나중에하자..), 상품 설명
-	
+2. DB 구조 바꾸기 
+3. 관리자 모드로 진행
+
+
+https://m.boostcourse.org/web326/lecture/59009?isDesc=false : 파일업로드
+
+
 ㄴshop.html 타임리프
 	$(function(){
 		$("#btn_add").click(function(){

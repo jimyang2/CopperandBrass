@@ -1,5 +1,7 @@
 package com.copperbrass.practice;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,11 +50,7 @@ public class MainController {
 		model.addAttribute("bestseller4",bestseller4);		
 		model.addAttribute("test","/img/main/bestseller/main_bundle.JPG");
 		
-		if(principal != null) {
-			model.addAttribute("principal",principal);
-			System.out.println("미야옹");
-			System.out.println(principal);
-		}
+		AuthRole(principal,model);
 		
 		
 		return "main";
@@ -64,7 +64,7 @@ public class MainController {
 	}
 	
 	@GetMapping("/copperbrass/shop")
-	public String aboutShop(Model model, @RequestParam(value="num", defaultValue="") String category) {
+	public String aboutShop(Model model, @RequestParam(value="num", defaultValue="") String category,Principal principal) {
 		
 		List<stocks> stocks = new ArrayList<>();
 		int lastStockNum = 0;
@@ -82,6 +82,8 @@ public class MainController {
 		}
 		
 		model.addAttribute("lastStockNum",lastStockNum);
+		
+		AuthRole(principal,model);
 		
 		return "shop";
 	}	
@@ -148,5 +150,48 @@ public class MainController {
 		
 
 		return "view-cart";
-	}		
+	}	
+	
+	@GetMapping("/copperbrass/shop-register")
+	public String registerItems(Model model) {
+		
+
+		return "shop_register";
+	}	
+	
+	public void AuthRole(Principal principal, Model model) {
+		if(principal != null) {
+			model.addAttribute("principal",principal);
+			System.out.println("미야옹");
+			System.out.println(principal);
+		}	
+	}
+	
+    @PostMapping("/copperbrass/upload")
+	public String upload(@RequestParam("file") MultipartFile file) {
+		
+		System.out.println("파일 이름 : " + file.getOriginalFilename());
+		System.out.println("파일 크기 : " + file.getSize());
+		
+        try(
+        		
+                // 맥일 경우 
+                //FileOutputStream fos = new FileOutputStream("/tmp/" + file.getOriginalFilename());
+                // 윈도우일 경우
+                FileOutputStream fos = new FileOutputStream("C:/Users/jyjang/git/CopperandBrass/CopperBrass/src/main/resources/static/img/main/bestseller/" + file.getOriginalFilename());
+                InputStream is = file.getInputStream();
+        ){
+        	    int readCount = 0;
+        	    byte[] buffer = new byte[1024];
+            while((readCount = is.read(buffer)) != -1){
+                fos.write(buffer,0,readCount);
+            }
+        }catch(Exception ex){
+            throw new RuntimeException("file Save Error");
+        }
+		
+		
+		return "about";
+	}    	
+	
 }

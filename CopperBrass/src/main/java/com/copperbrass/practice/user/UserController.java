@@ -1,11 +1,16 @@
 package com.copperbrass.practice.user;
 import jakarta.validation.Valid;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.copperbrass.practice.UserService;
 
@@ -45,4 +50,7 @@ public class UserController {
     public String login() {
         return "login_form";
     }    
+    
+
+
 }

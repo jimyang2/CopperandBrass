@@ -19,6 +19,9 @@
 		</div>
 	</div>
 <br><br>
+	<span sec:authorize="isAuthenticated()">
+		<input th:if="${principal != [ROLE_ADMIN]}" type="button" value="등록하기" onClick="location.href='/copperbrass/shop-register'">
+	</span>
 	<div>
 		<div class="container">
 			<ul class="gallery" id="stockslist">
