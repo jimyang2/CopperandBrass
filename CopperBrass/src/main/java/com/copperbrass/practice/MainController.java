@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -111,7 +112,7 @@ public class MainController {
 	@PostMapping("/copperbrass/findAllProductList")
 	@ResponseBody
 	public List<stocks> findAllProductListP(@RequestParam Map<String, Object> vo){
-		
+		System.out.println("ff");
 		List<stocks> addstocks = new ArrayList<>();
 		int lastStockNum = Integer.parseInt((String) vo.get("lastStockNum"));
 		String category = (String) vo.get("category");
@@ -168,13 +169,12 @@ public class MainController {
 	}
 	
     @PostMapping("/copperbrass/upload")
-	public String upload(@RequestParam("file") MultipartFile file) {
+	public String upload(@RequestParam("file") MultipartFile file,HttpServletRequest request) {
 		
 		System.out.println("파일 이름 : " + file.getOriginalFilename());
 		System.out.println("파일 크기 : " + file.getSize());
 		
         try(
-        		
                 // 맥일 경우 
                 //FileOutputStream fos = new FileOutputStream("/tmp/" + file.getOriginalFilename());
                 // 윈도우일 경우
@@ -189,9 +189,17 @@ public class MainController {
         }catch(Exception ex){
             throw new RuntimeException("file Save Error");
         }
-		
-		
-		return "about";
+        
+        String title = request.getParameter("title");
+        String category = request.getParameter("category");
+        String price = request.getParameter("price");
+        String explanation = request.getParameter("explanation");
+        String src = "/img/main/bestseller/"+file.getOriginalFilename();
+		System.out.println(src);
+//Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');
+        stocksService.registerItem(title,category,price,explanation,src);
+        
+		return "redirect:/copperbrass/shop";
 	}    	
 	
 }

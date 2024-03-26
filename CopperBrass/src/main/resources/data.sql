@@ -19,3 +19,6 @@ Insert into stocks(id,name,category,price,imgsrc) values ('main4_1','Hello! Stic
 Insert into stocks(id,name,category,price,imgsrc) values ('main4_2','Me Time Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_2.JPG');
 Insert into stocks(id,name,category,price,imgsrc) values ('main4_3','Werk Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_3.JPG');
 Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');
+
+
+Insert into site_user(username,password,email) values('admin','$2a$10$9ngWr3mjs.ndVxl3uPBOJewZ8YrvwWrskxg9OB150TxlTLusK089G','abc@gallup.co.kr');

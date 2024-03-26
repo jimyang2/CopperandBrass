@@ -1,9 +1,11 @@
-package com.copperbrass.practice;
+package com.copperbrass.practice.user;
 
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.copperbrass.practice.SiteUser;
 
 import lombok.RequiredArgsConstructor;
 

@@ -33,4 +33,8 @@ public class stocks {
 	
 	private Integer stock; 
 	
+	private String explanation; 
+	
+	private String mainShow;
+	
 }

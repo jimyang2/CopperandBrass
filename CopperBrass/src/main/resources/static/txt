@@ -6,6 +6,9 @@
 
 https://m.boostcourse.org/web326/lecture/59009?isDesc=false : 파일업로드
 
+shop 페이지 csrf 토큰 503 에러 해결
+https://determination.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0Spring-Security-CSRF-%EC%84%A4%EC%A0%95AJAX-POST-FORM 
+
 
 ㄴshop.html 타임리프
 	$(function(){
@@ -19,3 +22,5 @@ https://m.boostcourse.org/web326/lecture/59009?isDesc=false : 파일업로드
 			});//ajax	
 		});//click			
 	});//ready
+	
+	

@@ -1,11 +1,14 @@
 package com.copperbrass.practice;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import com.mysite.sbb.answer.Answer;
 
 import lombok.AllArgsConstructor;
 
@@ -41,9 +44,20 @@ public class StocksService {
 		return this.stocksRepository.find4stocksByNum(category, num);
 	}
 		
-	
-	
 	public stocks findByNum(int num) {
 		return this.stocksRepository.findByNum(num);
+	}
+	
+	public void registerItem(String title, String category, String price, String explanation, String src) {
+		stocks tmp_stock = new stocks();
+		
+		tmp_stock.setId(title);
+		tmp_stock.setName(title);
+		tmp_stock.setCategory(category);
+		tmp_stock.setPrice("$"+price);
+		tmp_stock.setExplanation(explanation);
+		tmp_stock.setImgsrc(src);
+		this.stocksRepository.save(tmp_stock);
+			
 	}
 }

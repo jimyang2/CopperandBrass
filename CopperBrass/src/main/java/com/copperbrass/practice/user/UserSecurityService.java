@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.copperbrass.practice.SiteUser;
-import com.copperbrass.practice.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
