@@ -26,16 +26,25 @@
 				<div class="stocksDetailtext">
 					<div class="name" th:text="${stock.name}"></div>
 					<div class="price" th:text="${stock.price}"></div>
-					<div class="detail">or 4 interest-free payments of $5.50 wit afterpay</div>
+					<div class="detail">or 4 interest-free payments of $5.50 with afterpay</div>
 					<br>
 					<div class="detail">Quantity</div>
 					<input type="number" id="quantity" style="width: 50px;height: 35px;" min="1" value="1">
 					<br><br>
 					<button class="blueBtn" id="addtocart" >Add to Cart</button>
 				</div>
+				<span sec:authorize="isAuthenticated()">
+					<input th:if="${principal != [ROLE_ADMIN]}" type="button" value="delete" onClick="" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
+				</span>	
+				<span sec:authorize="isAuthenticated()">
+					<input th:if="${principal != [ROLE_ADMIN]}" type="button" value="update" th:onclick="|location.href='@{/copperbrass/shop-register(name=${stock.name})}'|" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
+				</span>	
 			</div>
+			<br>	
 		</div>
 
+
+	
 	<!-- 모달창? -->
 	<nav th:replace="~{footer :: FooterFragment}"></nav>	
 	<div id="modalContainer" class="hidden"></div>
@@ -103,7 +112,7 @@
         setCookie([[${stock.name}]],[[${stock.imgsrc}]],quantity.value,[[${stock.price}]],1);
 		
 	}); 
-	
+	/*모달창 외 클릭 시*/
 	modalbg.addEventListener('click', () =>{
 		modal.style.display = 'none';
 		modalbg.classList.add('hidden');
@@ -138,12 +147,13 @@
 		name= name.replace(/^\s+|\s+$/g, ''); 
 		name = 'cartitem: '+name;
 	  	document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;path=/;';
+	  	console.log("delCookie");
 	};	
 	
 	console.log(document.cookie);
 
 	// 쿠키 전체 삭제하기
-	function allDelCookies () {
+	function allDelCookies() {
 
 	  const cookies = document.cookie.split('; '); // 배열로 반환
 	  console.log(cookies);
@@ -210,29 +220,37 @@
 getCookies();
 
 
-
-
-
-
-	/*모달창 닫기 - 실패
-	$(document).mouseup(function (e){
-		if($(".addtocart").has(e.target).length === 0){
-			$(".cart_modal").hide();
-		}
-	});*/
-
-
 	$(document).on('click', '[id^=DelItemId]', function(event) {
 		//cartSimpleItems
 	    var id_check = $(this).prev().text();
-	    alert($(this).parent().parent().text());
-
-		console.log(id_check.substr(0,id_check.indexOf('$')));
+	   // alert($(this).parent().parent().text()+"dd");
+		let parent = document.querySelector(".cartSimpleItems");
+		parent.innerText='';
+		
+		console.log(id_check.substr(0,id_check.indexOf('$'))+"여기1");
 	    delCookie(id_check.substr(0,id_check.indexOf('$')));
+	    console.log("여기11");
+	    //allDelCookies();
 	    getCookies();
 
 	    
 	});
+	
+	$(document).on('click', '[id^=DelItemId]', function(event) {
+		//cartSimpleItems
+	    var id_check = $(this).prev().text();
+	   // alert($(this).parent().parent().text()+"dd");
+		let parent = document.querySelector(".cartSimpleItems");
+		parent.innerText='';
+		
+		console.log(id_check.substr(0,id_check.indexOf('$'))+"여기1");
+	    delCookie(id_check.substr(0,id_check.indexOf('$')));
+	    console.log("여기11");
+	    //allDelCookies();
+	    getCookies();
+
+	    
+	});	
 	
 
 

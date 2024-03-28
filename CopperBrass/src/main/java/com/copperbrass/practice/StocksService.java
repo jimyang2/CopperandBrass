@@ -8,8 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.mysite.sbb.answer.Answer;
-
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -23,7 +22,7 @@ public class StocksService {
 	}
 	
 	public List<stocks> mainBestseller(String id) {
-		return this.stocksRepository.findByIdStartsWith(id);
+		return this.stocksRepository.findByMainshowStartsWith(id);
 	}	
 	
 	public List<stocks> findAll(){
@@ -48,6 +47,10 @@ public class StocksService {
 		return this.stocksRepository.findByNum(num);
 	}
 	
+	public stocks findByName(String name) {
+		return this.stocksRepository.findByName(name);
+	}	
+	
 	public void registerItem(String title, String category, String price, String explanation, String src) {
 		stocks tmp_stock = new stocks();
 		
@@ -60,4 +63,22 @@ public class StocksService {
 		this.stocksRepository.save(tmp_stock);
 			
 	}
+	
+	@Transactional
+	public void updateItem(String title, String category, String price, String explanation) {
+		stocks update_stock = stocksRepository.findById(title);
+						
+		update_stock.setId(title);
+		update_stock.setName(title);
+		update_stock.setCategory(category);
+		update_stock.setPrice("$"+price);
+		update_stock.setExplanation(explanation);
+	
+	}	
+	
+	public boolean checkIdDuplicate(String id) {
+		
+		return this.stocksRepository.existsById(id);
+	}
+	
 }

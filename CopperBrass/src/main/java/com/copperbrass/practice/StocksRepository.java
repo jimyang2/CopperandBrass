@@ -9,10 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface StocksRepository extends JpaRepository<stocks, Integer> {
 
-	@Query("SELECT s FROM stocks s WHERE s.id LIKE '%main1%'")
+	@Query("SELECT s FROM stocks s WHERE s.mainshow LIKE '%main1%'")
 	List<stocks> findMainBestseller1();
 	
-	List<stocks> findByIdStartsWith(String id);
+	List<stocks> findByMainshowStartsWith(String id);
+	
+	
+	
 	
 	@Query("SELECT s FROM stocks s order by s.num desc limit 4")
 	List<stocks> find4stocksByNum();	
@@ -27,6 +30,12 @@ public interface StocksRepository extends JpaRepository<stocks, Integer> {
 	List<stocks> find4stocksByNum(String category, int num);	
 	
 	stocks findByNum(int num);
+	
+	stocks findByName(String name);
+	
+	stocks findById(String id);
+	
+	boolean existsById(String id);
 	
 
 	

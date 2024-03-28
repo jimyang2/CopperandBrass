@@ -23,7 +23,7 @@
 	</div>
 <br><br>
 	<span sec:authorize="isAuthenticated()">
-		<input th:if="${principal != [ROLE_ADMIN]}" type="button" value="등록하기" onClick="location.href='/copperbrass/shop-register'">
+		<input th:if="${principal != [ROLE_ADMIN]}" type="button" value="Register" onClick="location.href='/copperbrass/shop-register'" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
 	</span>
 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 

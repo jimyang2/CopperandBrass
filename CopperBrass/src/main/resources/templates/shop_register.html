@@ -17,37 +17,45 @@
 		</div>
 	</div>
 <br><br>
-	<form method="post" name="board_form" th:action="@{/copperbrass/upload}" enctype="multipart/form-data">
+	<form  method="post" name="board_form" th:action="@{/copperbrass/upload}" enctype="multipart/form-data">
 		<div class="total">
 			<table class="registertable" >
 				<tr>
-					<td colspan="2">제품명 : <input type="text" name="title" id="title" style="width: 80%;"></td>
+					<td colspan="2">제품명 : 
+						<input type="text" name="title" id="title" style="width: 80%;" th:value="${updatestocks.name}">
+					</td>
 		
 				</tr>
 				
 				<tr>
 					<td> 카테고리 : 			
-						 <select name="category" style="width: 60%;">
-						  <option value="Notebook">Notebook</option>
-						  <option value="Greeting Cards">Greeting Cards</option>
-						  <option value="Wrapping Paper/Bags" selected="selected">Wrapping Paper/Bags</option>
-						  <option value="Sticky Notes" selected="selected">Sticky Notes</option>
+						 <select name="category" style="width: 60%;" th:value="${updatestocks.category}">
+						  <option value="Notebook" th:selected="${updatestocks.category}=='Notebook'">Notebook</option>
+						  <option value="Greeting Cards" th:selected="${updatestocks.category}=='Greeting Cards'">Greeting Cards</option>
+						  <option value="Wrapping Paper/Bags"  th:selected="${updatestocks.category}=='Wrapping Paper/Bags'">Wrapping Paper/Bags</option>
+						  <option value="Sticky Notes"  th:selected="${updatestocks.category}=='Sticky Notes'">Sticky Notes</option>
 						</select>
 					</td>
-					<td>가격 : <input type="text" id="price" name="price"></td>
+					<td>가격 : <input type="text" id="price" name="price" th:value="${updatestocks.price}"></td>
 				</tr>
-				
+
 				<tr>
-					<td colspan="2">이미지 : <input type="file" name="file" id="file-element" accept="image/*" required multiple></td> 
+					<td colspan="2">이미지 : 
+						<input th:if="${updatestocks.imgsrc==null}" type="file" name="file" id="file" accept="image/*" style="width: 400px;"  required multiple>
+						<input th:unless="${updatestocks.imgsrc==null}" type="text" name="file" id="file" th:value="${updatestocks.imgsrc}" style="width: 400px;" readonly>
+					</td> 
 				</tr>
 					
 				<tr>
 					<td colspan="2">
-						<textarea id="explanation" name="explanation" rows="10" cols="100"></textarea>
+						<textarea id="explanation" name="explanation" rows="10" cols="100" th:value="${updatestocks.explanation}" ></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="등록하기" ></td>
+					<td colspan="2">
+						<input th:if="${updatestocks.imgsrc==null}" type="submit" value="등록하기" onclick="send('R');">
+						<input th:unless="${updatestocks.imgsrc==null}" type="submit" value="업데이트" onclick="send('U');" >
+					</td>
 				</tr>
 			</table>
 			
@@ -62,11 +70,15 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script th:inline="javascript">
 
-	function send(){
+	function send(param){
 		
 		const regexp = /^[0-9]*.\d{2}$/;
 		
 		var f = document.board_form;
+		
+		if(param=='U'){
+			f.action='/copperbrass/update';
+		};
 		
 //		if($("#title").val() == ""){alert("제품명을 입력하세요"); return false;}
 	//	if($("#price").val() == ""){alert("가격을 입력하세요"); return false;}

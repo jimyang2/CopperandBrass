@@ -2,37 +2,41 @@
 
 	<div class="header">
 	<span class="logo" ><a  th:href="@{|/copperbrass|}"><img th:src="@{/img/CB로고.jpg}"  alt="cblog" ></a></span>	
-	 <ul class="myMenu navs">
-		<li><a class="nav yellow" th:href="@{|/copperbrass|}">Home</a></li>
-		<li>
-			<a class="nav" th:href="@{|/copperbrass/about|}">About</a>
-			<ul class="menu2_s submenu">
-				<li><a th:href="@{|/copperbrass/about|}" >Abouttheowner</a></li>
-
-			</ul>   
-		</li>
-		<li>
-			<a class="nav" th:href="@{|/copperbrass/shop|}">Shop</a>
-			<ul class="menu3_s submenu">
-				<li><a th:href="@{|/copperbrass/shop?num=Notebook|}" >Notebook</a></li>
-				<li><a th:href="@{|/copperbrass/shop?num=Greeting Cards|}" >Greeting Cards</a></li>
-				<li><a th:href="@{|/copperbrass/shop?num=Wrapping Paper/Bags|}" >Wrapping Paper/Bags</a></li>
-				<li><a th:href="@{|/copperbrass/shop?num=Sticky Notes|}" >Sticky Notes</a></li>
-			</ul>   
-		</li>
-		<li><a class="nav" th:href="@{|/copperbrass|}">Contact</a></li>
-		<li><a class="nav" th:href="@{|/copperbrass/policies-shipping|}">Policies&Shipping</a></li>   
-	</ul>
-	<span sec:authorize="isAuthenticated()">
-		<span class="headeruser" th:if="${principal != null}" th:text="${principal.Principal.username}"></span>
-		<span class="headeruser" th:if="${principal != null}" >님 안녕하세요</span>
-		<span class="headeruser" th:if="${principal != null}" th:text="${principal.Authorities}"></span>
-		<input type="button" value="로그아웃" onClick="location.href='/user/logout'">
-	</span>
-	<span sec:authorize="isAnonymous()">
-		<input type="button" value="로그인" onClick="location.href='/user/login'">
-		<input type="button" value="회원가입" onClick="location.href='/user/signup'">
-	</span>
+	<div>
+		 <ul class="myMenu navs">
+			<li><a class="nav yellow" th:href="@{|/copperbrass|}">Home</a></li>
+			<li>
+				<a class="nav" th:href="@{|/copperbrass/about|}">About</a>
+				<ul class="menu2_s submenu">
+					<li><a th:href="@{|/copperbrass/about|}" >About the owner</a></li>
+	
+				</ul>   
+			</li>
+			<li>
+				<a class="nav" th:href="@{|/copperbrass/shop|}">Shop</a>
+				<ul class="menu3_s submenu">
+					<li><a th:href="@{|/copperbrass/shop?num=Notebook|}" >Notebook</a></li>
+					<li><a th:href="@{|/copperbrass/shop?num=Greeting Cards|}" >Greeting Cards</a></li>
+					<li><a th:href="@{|/copperbrass/shop?num=Wrapping Paper/Bags|}" >Wrapping Paper/Bags</a></li>
+					<li><a th:href="@{|/copperbrass/shop?num=Sticky Notes|}" >Sticky Notes</a></li>
+				</ul>   
+			</li>
+			<li><a class="nav" th:href="@{|/copperbrass|}">Contact</a></li>
+			<li><a class="nav" th:href="@{|/copperbrass/policies-shipping|}">Policies&Shipping</a></li>   
+		</ul>
+	</div>
+	<div class="loginMenu">
+		<span sec:authorize="isAuthenticated()">
+			<span class="headeruser" th:if="${principal != null}" th:text="${principal.Principal.username}"></span>
+			<span class="headeruser" th:if="${principal != null}" >님</span>
+			<span class="headeruser" th:if="${principal != null}" th:text="${principal.Authorities}"></span>
+			<input type="button" value="Logout" onClick="location.href='/user/logout'" style="border-radius:5px;background-color:gainsboro;width:70px;height:30px;font-size: 16px;">
+		</span> 
+		<span sec:authorize="isAnonymous()">
+			<input type="button" value="Login" onClick="location.href='/user/login'" style="border-radius:5px;background-color:gainsboro;width:70px;height:30px;font-size: 16px;">
+			<input type="button" value="Sign up" onClick="location.href='/user/signup'" style="border-radius:5px;background-color:floralwhite;width:70px;height:30px;font-size: 16px;">
+		</span>
+	</div>
 	</div>
  		
 	

@@ -1,7 +1,9 @@
 package com.copperbrass.practice;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -60,7 +64,7 @@ public class MainController {
 	@GetMapping("/copperbrass/about")
 	public String aboutPage(Model model) {
 		
-
+		
 		return "about";
 	}
 	
@@ -130,11 +134,13 @@ public class MainController {
 	}	
 	
 	@GetMapping("/copperbrass/shop-details/{number}")
-	public String stockDetails(Model model, @PathVariable("number") int number){
+	public String stockDetails(Model model, @PathVariable("number") int number,Principal principal){
 		stocks stock = new stocks();
 		
 		stock = this.stocksService.findByNum(number);
 		model.addAttribute("stock",stock);
+		
+		AuthRole(principal,model);
 		
 		return "shop-details";// @ResponseBody에 의해 JSONArray 로 응답한다 
 	}	
@@ -154,9 +160,16 @@ public class MainController {
 	}	
 	
 	@GetMapping("/copperbrass/shop-register")
-	public String registerItems(Model model) {
+	public String registerItems(Model model, @RequestParam(value="name", defaultValue="") String name) {
 		
-
+		stocks stock = new stocks();
+		
+		if(!name.isBlank()) {
+			stock = stocksService.findByName(name);
+		}	
+		
+		model.addAttribute("updatestocks",stock);
+		
 		return "shop_register";
 	}	
 	
@@ -168,38 +181,85 @@ public class MainController {
 		}	
 	}
 	
-    @PostMapping("/copperbrass/upload")
-	public String upload(@RequestParam("file") MultipartFile file,HttpServletRequest request) {
-		
-		System.out.println("파일 이름 : " + file.getOriginalFilename());
-		System.out.println("파일 크기 : " + file.getSize());
-		
-        try(
-                // 맥일 경우 
-                //FileOutputStream fos = new FileOutputStream("/tmp/" + file.getOriginalFilename());
-                // 윈도우일 경우
-                FileOutputStream fos = new FileOutputStream("C:/Users/jyjang/git/CopperandBrass/CopperBrass/src/main/resources/static/img/main/bestseller/" + file.getOriginalFilename());
-                InputStream is = file.getInputStream();
-        ){
-        	    int readCount = 0;
-        	    byte[] buffer = new byte[1024];
-            while((readCount = is.read(buffer)) != -1){
-                fos.write(buffer,0,readCount);
-            }
-        }catch(Exception ex){
-            throw new RuntimeException("file Save Error");
+	
+	
+	
+    @PostMapping(value="/copperbrass/upload")
+	public String upload(HttpServletRequest request) throws IOException {
+    	
+    	String title = request.getParameter("title");
+    	
+    	if(this.stocksService.checkIdDuplicate(title)) {
+    		
+
+    	}else {
+    	
+	    	System.out.println("중복안됨");
+			// 처음 등록할 때
+	    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+	    	MultipartFile file = multipartRequest.getFile("file");
+	    	
+			System.out.println("파일 이름 : " + file.getOriginalFilename());
+			System.out.println("파일 크기 : " + file.getSize());
+	  
+	        
+	        try(
+	                // 맥일 경우 
+	                //FileOutputStream fos = new FileOutputStream("/tmp/" + file.getOriginalFilename());
+	                // 윈도우일 경우
+	                FileOutputStream fos = new FileOutputStream("C:/Users/jyjang/git/CopperandBrass/CopperBrass/src/main/resources/static/img/main/bestseller/" + file.getOriginalFilename());
+	                InputStream is = file.getInputStream();
+	        ){
+	        	    int readCount = 0;
+	        	    byte[] buffer = new byte[1024];
+	            while((readCount = is.read(buffer)) != -1){
+	                fos.write(buffer,0,readCount);
+	            }
+	        }catch(Exception ex){
+	            throw new RuntimeException("file Save Error");
+	        }
+	        
+	        String src = "/img/main/bestseller/"+file.getOriginalFilename();
+	        
+	        String price = request.getParameter("price");
+	        if(price.startsWith("$")) {
+	        	price = price.replace("$", "");
+	        }
+	        
+	        
+	        String category = request.getParameter("category");
+	        String explanation = request.getParameter("explanation");
+
+        stocksService.registerItem(title,category,price,explanation,src);
+//Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');
+        
+    	}
+		return "redirect:/copperbrass/shop-register";
+	}    	
+	
+    
+    // update 할 때 
+    @PostMapping(value="/copperbrass/update")
+	public String update(HttpServletRequest request) {
+        
+        String src = request.getParameter("file");
+
+        String price = request.getParameter("price");
+        if(price.startsWith("$")) {
+        	price = price.replace("$", "");
         }
         
         String title = request.getParameter("title");
         String category = request.getParameter("category");
-        String price = request.getParameter("price");
         String explanation = request.getParameter("explanation");
-        String src = "/img/main/bestseller/"+file.getOriginalFilename();
-		System.out.println(src);
+        
+
 //Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');
-        stocksService.registerItem(title,category,price,explanation,src);
+        stocksService.updateItem(title,category,price,explanation);
         
 		return "redirect:/copperbrass/shop";
-	}    	
-	
+	}       
+    
+    
+
 }

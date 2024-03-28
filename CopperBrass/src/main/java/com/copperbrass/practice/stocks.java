@@ -35,6 +35,6 @@ public class stocks {
 	
 	private String explanation; 
 	
-	private String mainShow;
+	private String mainshow;
 	
 }
