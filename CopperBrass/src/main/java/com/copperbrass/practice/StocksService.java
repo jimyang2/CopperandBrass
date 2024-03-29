@@ -60,21 +60,31 @@ public class StocksService {
 		tmp_stock.setPrice("$"+price);
 		tmp_stock.setExplanation(explanation);
 		tmp_stock.setImgsrc(src);
+		tmp_stock.setShoworhide("S");
 		this.stocksRepository.save(tmp_stock);
 			
 	}
 	
 	@Transactional
-	public void updateItem(String title, String category, String price, String explanation) {
-		stocks update_stock = stocksRepository.findById(title);
+	public void updateItem(int num, String title, String category, String price, String explanation) {
+		stocks update_stock = stocksRepository.findByNum(num);
 						
 		update_stock.setId(title);
 		update_stock.setName(title);
 		update_stock.setCategory(category);
 		update_stock.setPrice("$"+price);
 		update_stock.setExplanation(explanation);
+		
 	
 	}	
+	
+	@Transactional
+	public void deleteItem(int num) {
+		stocks hide_stock = stocksRepository.findByNum(num);
+
+		
+		hide_stock.setShoworhide("H");
+	}		
 	
 	public boolean checkIdDuplicate(String id) {
 		

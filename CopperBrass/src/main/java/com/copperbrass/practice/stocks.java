@@ -37,4 +37,6 @@ public class stocks {
 	
 	private String mainshow;
 	
+	private String showorhide;
+	
 }

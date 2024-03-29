@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface StocksRepository extends JpaRepository<stocks, Integer> {
 
-	@Query("SELECT s FROM stocks s WHERE s.mainshow LIKE '%main1%'")
+	@Query("SELECT s FROM stocks s WHERE s.mainshow LIKE '%main1%' and s.showorhide = 'S'")
 	List<stocks> findMainBestseller1();
 	
 	List<stocks> findByMainshowStartsWith(String id);
@@ -17,16 +17,16 @@ public interface StocksRepository extends JpaRepository<stocks, Integer> {
 	
 	
 	
-	@Query("SELECT s FROM stocks s order by s.num desc limit 4")
+	@Query("SELECT s FROM stocks s where s.showorhide = 'S' order by s.num desc limit 4")
 	List<stocks> find4stocksByNum();	
 	
-	@Query("SELECT s FROM stocks s where s.num < ?1 order by s.num desc limit 4")
+	@Query("SELECT s FROM stocks s where s.num < ?1 and s.showorhide = 'S' order by s.num desc limit 4")
 	List<stocks> find4stocksByNum(int num);
 	
-	@Query("SELECT s FROM stocks s where s.category = ?1 order by s.num desc limit 4")
+	@Query("SELECT s FROM stocks s where s.category = ?1 and s.showorhide = 'S' order by s.num desc limit 4")
 	List<stocks> find4stocksByNum(String category);	
 	
-	@Query("SELECT s FROM stocks s where s.category = ?1 and s.num < ?2 order by s.num desc limit 4")
+	@Query("SELECT s FROM stocks s where s.category = ?1 and s.num < ?2  and s.showorhide = 'S' order by s.num desc limit 4")
 	List<stocks> find4stocksByNum(String category, int num);	
 	
 	stocks findByNum(int num);
@@ -34,6 +34,7 @@ public interface StocksRepository extends JpaRepository<stocks, Integer> {
 	stocks findByName(String name);
 	
 	stocks findById(String id);
+
 	
 	boolean existsById(String id);
 	

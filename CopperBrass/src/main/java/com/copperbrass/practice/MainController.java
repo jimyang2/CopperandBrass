@@ -173,11 +173,21 @@ public class MainController {
 		return "shop_register";
 	}	
 	
+	@GetMapping("/copperbrass/shop-register2")
+	public String registerItems2(Model model) {
+		
+		stocks stock = new stocks();
+		
+		model.addAttribute("updatestocks",stock);
+		model.addAttribute("duplicate", "같은 내용의 상품이 있습니다.");
+		model.addAttribute("searchUrl", "/copperbrass/shop-register");		
+		
+		return "shop_register";
+	}		
+	
 	public void AuthRole(Principal principal, Model model) {
 		if(principal != null) {
 			model.addAttribute("principal",principal);
-			System.out.println("미야옹");
-			System.out.println(principal);
 		}	
 	}
 	
@@ -185,12 +195,14 @@ public class MainController {
 	
 	
     @PostMapping(value="/copperbrass/upload")
-	public String upload(HttpServletRequest request) throws IOException {
+	public String upload( Model model,HttpServletRequest request) throws IOException {
     	
     	String title = request.getParameter("title");
-    	
+    	String nextPage = null;
     	if(this.stocksService.checkIdDuplicate(title)) {
+    		System.out.println("중복됨");
     		
+    		nextPage = "redirect:/copperbrass/shop-register2";
 
     	}else {
     	
@@ -232,9 +244,10 @@ public class MainController {
 
         stocksService.registerItem(title,category,price,explanation,src);
 //Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');
-        
+        nextPage = "redirect:/copperbrass/shop";
     	}
-		return "redirect:/copperbrass/shop-register";
+    	return nextPage;
+		
 	}    	
 	
     
@@ -249,17 +262,29 @@ public class MainController {
         	price = price.replace("$", "");
         }
         
+        int numId = Integer.parseInt(request.getParameter("numId"));
         String title = request.getParameter("title");
         String category = request.getParameter("category");
         String explanation = request.getParameter("explanation");
         
 
 //Insert into stocks(id,name,category,price,imgsrc) values ('main4_4','Goal Getter Sticky Notes','Sticky Notes','$3.00','/img/main/bestseller/main4_4.JPG');
-        stocksService.updateItem(title,category,price,explanation);
+        stocksService.updateItem(numId,title,category,price,explanation);
         
 		return "redirect:/copperbrass/shop";
 	}       
     
+    
+    // delete 할 때 
+    @PostMapping(value="/copperbrass/delete")
+	public String delete(HttpServletRequest request) {
+        
+        int targetnum = Integer.parseInt(request.getParameter("targetnum"));
+        System.out.println(targetnum);
+        stocksService.deleteItem(targetnum);
+        
+		return "redirect:/copperbrass/shop";
+	}       
     
 
 }

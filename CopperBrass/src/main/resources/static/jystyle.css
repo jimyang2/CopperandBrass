@@ -566,46 +566,59 @@ ul, li{margin:0;padding:0;list-style:none}
 
 
 /* detail-stocks 페이지 (시작)*/
+
+.categoryDetails{
+	display: flex;
+	font-family: '나눔스퀘어';	
+	font-size: 18px;	
+justify-content: center;
+	justify-content : center;
+	align-items: center;
+
+
+}
+.minitest{
+	width: 700px;
+}
+
 .total .maincontent .detailContainer{
 	float: right;
-	height: 500px;
+	height: 700px;
 	width: 700px;
 	
 }
-
 .cart_modal{
-    top: 0;
-    right: 0;
-    width: 287px;
-    height: 100%;
+    top: 0; right: 0;
+    width: 287px; height: 100%;
 	background-color: white;
 	z-index: 999999;
 	display: none;
 	text-align: center;
 	position: fixed;
-	
 }
-
-
-
-
 .total .maincontent .detailContainer .stocksDetailimgCon{
 	float: left;
 	width: 50%;
-	height: 70%;
+	height: 50%;
 }
-
 .total .maincontent .detailContainer .stocksDetailimgCon .stocksDetailimg{
 	width:350px;
+	height:350px;
 }
-
 .total .maincontent .detailContainer .stocksDetailtext{
 	margin-left: 40px;
 	float: left;
-	height: 70%;
+	height: 350px;
 	font-family: '나눔스퀘어';	
 	position: relative;
 	width: 300px;
+}
+.total .maincontent .detailContainer .stocksDetailExplan{
+	float: left;
+	margin: 20px;
+	background-color: #E0F2F1;
+	font-family: '나눔스퀘어';	
+	font-size: 18px;
 }
 
 .total .maincontent .detailContainer .stocksDetailtext .name{
@@ -620,7 +633,7 @@ ul, li{margin:0;padding:0;list-style:none}
 	color: 	#282828;
 	font-size: 20px;
 }
-.total .maincontent .detailContainer .stocksDetailtext .detail{
+.total .maincontent .detailContainer .detail{
 	color: 	#282828;
 	font-size: 17px;
 	color: black;
