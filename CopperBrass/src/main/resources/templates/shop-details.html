@@ -19,9 +19,10 @@
 <div class="total">
 	<div class="categoryDetails">
 		<div class="minitest">
-			shop / [[${stock.category}]]
+			Shop / [[${stock.category}]] / [[${stock.name}]]
 		</div>
 	</div>
+	<br>
 	</div>	
 	<div class="total">
 		<div class="maincontent">
@@ -48,10 +49,10 @@
 				<form method="post"  name="board_form" th:action="@{/copperbrass/delete}">	
 					<input type="hidden" id="targetnum" name="targetnum" th:value="${stock.num}">		
 					<span sec:authorize="isAuthenticated()">
-						<input th:if="${principal != [ROLE_ADMIN]}" type="submit" value="delete" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
+						<input th:if="${principal == [ROLE_ADMIN]}" type="submit" value="delete" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
 					</span>	
 					<span sec:authorize="isAuthenticated()">
-						<input th:if="${principal != [ROLE_ADMIN]}" type="button" value="update" th:onclick="|location.href='@{/copperbrass/shop-register(name=${stock.name})}'|" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
+						<input th:if="${principal == [ROLE_ADMIN]}" type="button" value="update" th:onclick="|location.href='@{/copperbrass/shop-register(name=${stock.name})}'|" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">
 					</span>	
 					<span>
 						<input type="button" value="previous" th:onclick="location.href='javascript:history.back();'" style="border-radius:5px;background-color:gainsboro;width:100px;height:30px;font-size: 16px;float: right;">

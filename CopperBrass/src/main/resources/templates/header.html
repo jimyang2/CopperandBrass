@@ -28,8 +28,9 @@
 	<div class="loginMenu">
 		<span sec:authorize="isAuthenticated()">
 			<span class="headeruser" th:if="${principal != null}" th:text="${principal.Principal.username}"></span>
+			<!--<span class="headeruser" th:if="${principal != null}" th:text="${principal.Principal.Authorities}"></span> -->
 			<span class="headeruser" th:if="${principal != null}" >님</span>
-			<span class="headeruser" th:if="${principal != null}" th:text="${principal.Authorities}"></span>
+			<input type="text" value="My Page" onClick="location.href='/copperbrass/mypage'" style="width:70px;height:30px;font-size: 16px;">
 			<input type="button" value="Logout" onClick="location.href='/user/logout'" style="border-radius:5px;background-color:gainsboro;width:70px;height:30px;font-size: 16px;">
 		</span> 
 		<span sec:authorize="isAnonymous()">

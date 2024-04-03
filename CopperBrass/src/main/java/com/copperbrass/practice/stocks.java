@@ -1,10 +1,16 @@
 package com.copperbrass.practice;
 
+
+import java.util.List;
+
+import com.copperbrass.practice.purchase.purchasedetails;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,5 +44,8 @@ public class stocks {
 	private String mainshow;
 	
 	private String showorhide;
+	
+	@OneToMany(mappedBy = "stock")
+	private List<purchasedetails> purchasedetails;
 	
 }

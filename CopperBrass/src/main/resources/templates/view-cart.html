@@ -19,9 +19,9 @@
 		</div>
 	</div>
 <br><br>
-
+<form name="board_form" th:action="@{/purchase/purchase}" method="post">
 	<div class="VCmaincontent">
-
+		<input id="test" type="text" name="name_list" value="">
 		<div class="cartSimpleItemss">
 			
 		</div>
@@ -33,14 +33,14 @@
 			total
 			<span id="subtotalPrice" class="subtotalPrice" >$</span>
 			<br><br>
-			<button class="blueBtn" id="viewCart" >Checkout</button>
+			<button class="blueBtn" id="viewCart" onclick="send();" >Checkout</button>
 			<br>
 
 		</div>
 
 		
 	</div>	
-
+</form>
 	<nav th:replace="~{footer :: FooterFragment}"></nav>	
 	
 
@@ -50,6 +50,15 @@
 <script th:inline="javascript">
 
 	const modalbg = document.getElementById('modalContainer');
+	var sendList = [];
+	
+	function send(){
+		var frm = document.board_form;
+		
+		frm.name_list.value = sendList;
+		
+		frm.submit();
+	}
 
   	
 	function setCookie(cookie_name, path, quantity, price, days) {
@@ -128,18 +137,16 @@
 				path = val[i].substring(val[i].indexOf('=') + 1, val[i].indexOf(':::'));
 			    quan = Number(val[i].substring(val[i].indexOf(':::')+3,val[i].indexOf('^^^')));
 			    pri = val[i].substring(val[i].indexOf('^^^')+3);
-
+				totalpri = Number(parseFloat((parseFloat(pri.substring(1)).toFixed(2)*quan)).toFixed(2));
 				
-				
-
 				addCartItems += '<div class="cartItmenList">';
 				addCartItems += '<div class="cartItmenListImg2">';
 				addCartItems += '<img class="cartItmenImg" src="'+path+'" />';
 				addCartItems += '</div>';
 				addCartItems += '<div class="cartItmenListtext2">';
-				addCartItems += ''+x+'<br> <div id="Pprice'+i+'"> '+pri+'</div></div>';
-				addCartItems += '<div class="cartItmenListtext3"><input type="number" style="width: 50px;height: 20px;" id= "quan'+i+'" value="'+quan+'" min="1"/></div>';				
-				addCartItems += '<div class="cartItmenListtext3" id= "Ptotalprice'+i+'">';
+				addCartItems += ''+x+'<br> <div id="Pprice'+i+'" name="Pprice'+i+'"> '+pri+'</div></div>';
+				addCartItems += '<div class="cartItmenListtext3"><input type="number" style="width: 50px;height: 20px;" name="quan" id= "quan'+i+'" value="'+quan+'" min="1"/></div>';				
+				addCartItems += '<div class="cartItmenListtext3" name="Ptotalprice'+i+'" id= "Ptotalprice'+i+'">';
 				addCartItems += '<b>'+pri+'</b></div>';
 				
 				addCartItems += '<div class="deleteItem" id="DelItemId'+i+'">';
@@ -148,14 +155,16 @@
 				addCartItems += '<hr style="width:90%;height:1px;border:none;background-color:lightgray;">';
 				
 				subtotalPrice += Number(parseFloat((parseFloat(pri.substring(1)).toFixed(2)*quan)).toFixed(2));
-
-
+				//subtotalPrice += totalpri;
+				
+				sendList.push([x]);	// 이렇게 하면 개수 수정할 때 반영이 안됨
 				}	
 				
 		}
 
 		subtotalId.innerText='$ '+subtotalPrice;
 		parent.insertAdjacentHTML('beforeend', addCartItems);
+		console.log(sendList);
 	}
 	
 	

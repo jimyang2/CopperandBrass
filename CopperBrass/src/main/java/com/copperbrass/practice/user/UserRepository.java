@@ -8,5 +8,9 @@ import com.copperbrass.practice.SiteUser;
 
 public interface UserRepository extends JpaRepository<SiteUser, Long> {
 	
-	 Optional<SiteUser> findByusername(String username);
+	Optional<SiteUser> findByusername(String username);
+	
+	
+
+	
 }

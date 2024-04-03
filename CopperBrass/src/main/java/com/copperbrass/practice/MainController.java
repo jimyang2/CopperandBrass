@@ -286,5 +286,11 @@ public class MainController {
 		return "redirect:/copperbrass/shop";
 	}       
     
+    @GetMapping("/copperbrass/mypage")
+    public String MyPage() {
+    	
+    	return "mypage";
+    }
+    
 
 }
