@@ -29,6 +29,7 @@ public class purchase {
 	
 	private LocalDateTime  orderdatetime;
 	
+	// 0:입금전 1:입금완료 2:구매확정 3:환불 9:기타
 	private String deposit; 
 
 	private String totalprice;

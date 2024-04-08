@@ -1,5 +1,7 @@
 package com.copperbrass.practice.purchase;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -9,5 +11,10 @@ import lombok.AllArgsConstructor;
 public class PurchasedetailService {
 	
 	private final PurchasedetailsRepository purchasedetailsRepository;
+
+	public void saveall(List<purchasedetails> uploadList) {
+		this.purchasedetailsRepository.saveAll(uploadList);
+		
+	}
 
 }

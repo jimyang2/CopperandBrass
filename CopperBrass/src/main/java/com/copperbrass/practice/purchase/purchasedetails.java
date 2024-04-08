@@ -28,8 +28,6 @@ public class purchasedetails {
 	@ManyToOne
 	private purchase purchase;
 	
-
-	
 	private Integer count;
 	
 	private String price;
