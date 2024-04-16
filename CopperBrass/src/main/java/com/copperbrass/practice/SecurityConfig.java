@@ -24,7 +24,8 @@ public class SecurityConfig {
             .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                 .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())			//인증되지 않은 모든페이지의 요청을 허락, 로그인 X 페이지 요청 허락
             .csrf((csrf) -> csrf												///h2-console/로 시작하는 모든 URL은 CSRF 검증을 하지 않는다
-                    .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
+//            		.disable())
+            		.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
             .headers((headers) -> headers		
                     .addHeaderWriter(new XFrameOptionsHeaderWriter(
                         XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))) 

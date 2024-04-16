@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.copperbrass.practice.SiteUser;
 import com.copperbrass.practice.StocksService;
@@ -34,6 +36,7 @@ public class PurchaseController {
 	private final PurchasedetailService purchasedetailService;
 	private final StocksService stocksService;
 	private final UserService userservice;
+	
 	
 	
     @PostMapping("/purchase/purchase")
@@ -79,24 +82,50 @@ public class PurchaseController {
     	return "redirect:/copperbrass/mypage";
     }
     
+    
+    
     @GetMapping("/copperbrass/mypage")
     public String MyPage(Model model, Principal principal) {
     	
 
     	System.out.println("DDDDDHHHHHH"); //여기가문제 여기 고치기
     	SiteUser user = new SiteUser();
-    	System.out.println("DDDDD"); //여기가문제 여기 고치기
-
-    	Optional<purchase> mypageList = purchaseService.findDeposit1status(user);
+    	user = userservice.findUserByName2(principal.getName());
+    	// user 비었을 때 예외처리 해줘야함
+    	if(user.getUsername().isEmpty()) {
+    		return "redirect:/copperbrass/shop";
+    	}
+    	
+    	List<purchase> mypageList = purchaseService.findDeposit1status(user);
+    	
     	//AuthRole(principal,model);
-   
+    	System.out.println("yyy");
     	model.addAttribute("mypageList",mypageList);
     	System.out.println(mypageList);
+    	
+
+
     	model.addAttribute("test","test");
     	
     	return "mypage";
     }    
 	
+    
+    @PostMapping("/copperbrass/mypage_details")
+    public String MyPage_details(Model model,HttpServletRequest request) {
+    	System.out.println("여기는들어옴");
+
+    	String src = request.getParameter("newInputId");
+    //해당되는 목록 가져오기
+    	System.out.println(src);
+    	
+    	purchase p = this.purchaseService.getPurchasedetails(src);
+    	
+    	model.addAttribute("p",p);
+    	
+    	return "mypage-details";
+    }  
+    
 	public void AuthRole(Principal principal, Model model) {
 		if(principal != null) {
 			model.addAttribute("principal",principal);
