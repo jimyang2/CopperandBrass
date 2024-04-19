@@ -21,7 +21,7 @@
 <br><br>
 <form name="board_form" th:action="@{/purchase/purchase}" method="post">
 	<div class="VCmaincontent">
-		<input id="test" type="text" name="name_list" value="">
+		<input id="test" type="hidden" name="name_list" value="">
 		<div class="cartSimpleItemss">
 			
 		</div>
@@ -51,11 +51,14 @@
 
 	const modalbg = document.getElementById('modalContainer');
 	var sendList = [];
-	
+	//  const cookies = document.cookie.split('; '); // 배열로 반환
+	//  console.log(cookies);	
 	function send(){
 		var frm = document.board_form;
 		
 		frm.name_list.value = sendList;
+		
+		allDelCookies ();
 		
 		frm.submit();
 	}
@@ -108,9 +111,9 @@
 	    alert('삭제할 쿠키가 없습니다.');
 	  } else {
 	    for (i = 0; i < cookies.length; i++) {
-	      document.cookie = cookies[i].split('=')[0] + '=; expires=' + expiration;
+	      document.cookie = cookies[i].split('=')[0] + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;path=/;';
 	    }
-	    alert('쿠키 전부 삭제완료!!');
+	    console.log("all Del Cookies 쿠키값 : "+document.cookie);
 	  }
 	};	
 

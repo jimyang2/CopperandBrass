@@ -25,27 +25,30 @@
 	<br>
 	
 	
-	<div class="" th:text="${p.orderid}"></div>
-	
-<div sytle="width: 1000px;margin: 0 auto;">
-	<div style="display:flex;gap: 1em;flex-wrap: wrap;">
-		<div style="width: 250px;height: 250px;background-color: aliceblue;"></div>
-		<div style="width: 250px;height: 250px;background-color: aliceblue;"></div>
-		<div style="width: 250px;height: 250px;background-color: aliceblue;"></div>
-		<div style="width: 250px;height: 250px;background-color: aliceblue;"></div>
-    </div>
+	<div class="" th:text="${p.orderid}" style=""></div>
+<!-- https://apost.dev/862/ -->
+<div >
 </div>
-	
-	
-	    <ul>
+
+    
+
+	<div style="width: 80%;">
+	<br>
+	    <ul sytle="margin: 0 auto;">
 	        <li th:each="answer : ${p.purchaseDetailsList}" >
-				<span th:text="${answer.stock.name}" style="display:inline-block;width: 60%;min-width:600px; background-color: aliceblue;"></span>
-				<span th:text="${answer.count}" style="display:inline-block;width: 10%;min-width:50px; background-color:antiquewhite;"></span>
-				<span th:text="${answer.price}" style="display:inline-block;width: 10%;min-width:50px; background-color:beige;"></span>
+				<!-- <span th:text="${answer.stock.name}" style="flex-basis: 600px;flex-grow: 1;flex-shrink: 1;display:inline-block;width: 60%;min-width:600px; background-color: aliceblue;"></span>
+				<span th:text="${answer.count}" style="flex-basis: 50px;flex-grow: 1;flex-shrink: 1;display:inline-block;width: 10%;min-width:50px; background-color:antiquewhite;"></span>
+				<span th:text="${answer.price}" style="flex-basis: 50px;flex-grow: 1;flex-shrink: 1;display:inline-block;width: 10%;min-width:50px; background-color:beige;"></span> -->
+				<div style="display:flex;gap: 1em;flex-wrap: wrap;">		
+					<div th:text="${answer.stock.name}" style="flex-basis: 600px;flex-grow: 1;flex-shrink: 1;"></div>
+					<div  style="flex-basis: 50px;flex-grow: 1;flex-shrink: 1;">[[${answer.count}]]개</div>
+					<div style="flex-basis: 50px;flex-grow: 1;flex-shrink: 1;">$[[${answer.price}]]</div>
+				</div>
+
 			</li>
 	    </ul>	
 
-
+</div>
 
 	
 	<br><br><br><br>
