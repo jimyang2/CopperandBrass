@@ -38,7 +38,11 @@ public class PurchaseService {
 		return this.purchaseRepository.findDeposit1status(user);
 	}
 	
-	public purchase getPurchasedetails(String orderid){
-		return this.purchaseRepository.findByOrderid(orderid);
+	public Optional<purchase> getPurchasedetails(Integer id){
+		return this.purchaseRepository.findById(id);
 	}
+
+
+	
+
 }

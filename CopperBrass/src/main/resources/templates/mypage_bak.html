@@ -20,9 +20,7 @@
 		My Page
 		</div>
 	</div>
-	
 <br><br>
-
 	<div class="total">
 		<div class="maincontent">
 			구매내역
@@ -30,36 +28,40 @@
 	</div>
 	<br>
 	
-
+	<!--<div th:if="${#lists.isEmpty(mypageList)}" >-->
 	<div class="total" th:if="${#lists.isEmpty(mypageList)}" >
 		<div class="maincontent">
 			구매 내역이 존재하지 않습니다.
 		</div>
 	</div>
-	<div class="total">
-		<div class="maincontent">	
-			<div class="myPagePurchase" style="border: 1px solid #ddd;" th:each="firstStock : ${mypageList}" th:onClick="window.location='/copperbrass/mypage_details?id=1'">
-			    <div>
-			       <span class="mypageDate" th:text="${#temporals.format(firstStock.orderdatetime, 'yyyy - MM - dd')}"></span>
-		
-			    </div>	     
-			    <div>
-			        주문번호: <span th:text="${firstStock.orderid}"></span>
-			    </div>
-			    <div>
-			        금액: $<span th:text="${firstStock.totalprice}"></span>
-			    </div>
-			    <div>
-			        상태: 
-			        <span th:if="${firstStock.deposit}=='0'">입금대기</span>
-			        <span th:if="${firstStock.deposit}=='1'">입금확인</span>
-			        <span th:if="${firstStock.deposit}=='2'">출고준비</span>
-			        <span th:if="${firstStock.deposit}=='3'">배송중</span>
-			        <span th:if="${firstStock.deposit}=='9'">배송완료</span>
-			    </div>
-			</div>
-		</div>
-	</div>
+	
+	<table>
+		<tr>
+			<td>주문번호</td>
+			<td>주문날짜</td>
+			<td>총가격</td>
+			<td>현재상태</td>
+		</tr>
+		<tr th:each="firstStock : ${mypageList}"  style="cursor: pointer;"  th:onClick="window.location='/copperbrass/mypage_details?id=1'">
+			<td >
+				<div th:text="${firstStock.orderid}" th:onClick="view([[${firstStock.orderid}]])" style="cursor: pointer;"></div>
+			</td>
+			<td>
+				<div th:text="${#temporals.format(firstStock.orderdatetime, 'yyyy.MM.dd HH:mm:ss')}"></div>
+			</td>
+			<td>
+				$<span th:text="${firstStock.totalprice}"></span>
+			</td>									
+			<td>
+				<div th:if="${firstStock.deposit}=='0'">입금대기</div>
+				<div th:if="${firstStock.deposit}=='1'">입금확인</div>
+				<div th:if="${firstStock.deposit}=='2'">출고준비</div>
+				<div th:if="${firstStock.deposit}=='3'">배송중</div>
+				<div th:if="${firstStock.deposit}=='9'">배송완료</div>
+			</td>
+		</tr>
+	</table>
+
 
 	
 	<br><br><br><br>

@@ -17,4 +17,9 @@ public class PurchasedetailService {
 		
 	}
 
+	public List<purchasedetails> getPurchasedetailsList(Integer id) {
+		return this.purchasedetailsRepository.findAllById(id);
+		
+	}
+	
 }

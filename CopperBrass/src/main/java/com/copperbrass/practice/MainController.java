@@ -93,14 +93,7 @@ public class MainController {
 		return "shop";
 	}	
 		
-	@GetMapping("/copperbrass/contact")
-	public String aboutContact(Model model) {
-		List<stocks> stocks = this.stocksService.findAll();
-		
-		model.addAttribute("stocks",stocks);
 
-		return "contact";
-	}		
 	
 	@GetMapping("/copperbrass/findAllProductList")
 	@ResponseBody
@@ -145,8 +138,24 @@ public class MainController {
 		return "shop-details";// @ResponseBody에 의해 JSONArray 로 응답한다 
 	}	
 	
+	@GetMapping("/copperbrass/contact")
+	public String aboutContact(Model model) {
+		
+
+		return "contact";
+	}	
+	/*
+	 * @GetMapping("/copperbrass/contact") 
+	 * public String aboutContact(Model model) {
+	 * List<stocks> stocks = this.stocksService.findAll();
+	 * 
+	 * model.addAttribute("stocks",stocks);
+	 * 
+	 * return "contact"; }
+	 */		
+	
 	@GetMapping("/copperbrass/policies-shipping")
-	public String aboutpoiciesShipping(Model model) {
+	public String aboutPoiciesShipping(Model model) {
 		
 
 		return "policies-shipping";

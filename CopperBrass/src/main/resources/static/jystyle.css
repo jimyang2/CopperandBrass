@@ -48,69 +48,91 @@ a {
 }
 
 /*header (시작)*/
-	.header {
-		width: 100%;
-	      display: flex;
-	      align-items: center;   /* 콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정 */
-		font-family: 'NanumSquareRoundB';
-	}
-	.header .navs{
-	  margin: auto;
-	}
-	.header .navs .logo{
-	 	float: left;
-	}
-	.header .navs .nav{
-		font-size : 18px;
-		margin-right: 10px;
-		position: relative;
-	}
-	.header a{
-		text-decoration-line: none;
-		font-weight: bold;
-	}
-	
-	.header .navs  .nav .yellow{
-		color : #EDC06F
-	}
-	.header .navs .nav:visited {
-	  	color : black;
-	  	text-decoration: none;
-	}
-	:visited {
-	  	color : black;
-	  	text-decoration: none;
-	}
-	.header .navs  .nav:hover {
-	 	 color : #EDC06F;
-	}
-	.header .navs  .nav:hover .submenu {
-	 	 color : black;
-	 	 text-decoration: none;
-	}
-	ul, ol, li { list-style:none; margin:0; padding:0; }
-	   
-	ul.myMenu {position: absolute;top: 3.5%;left: 50%;transform: translate(-50%,-50%);z-index: 100000;}
-	ul.myMenu > li { display:inline-block;  padding:5px 3px;  text-align:center; position:relative; }
-	ul.myMenu > li:hover { background:#fff; }
-	ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
-	ul.myMenu > li:hover ul.submenu { display:block; }
-	ul.myMenu > li ul.submenu > li { display:inline-block; padding:5px 10px; background-color: white; font-size : 18px;}
-	ul.myMenu > li ul.submenu > li:hover { color: EDC06F; }
-	
-	
-	.loginMenu{
-		font-family: 'NanumSquareRoundB';
-		position: absolute;
-		right: 1%;
-		width: 300px;
-		text-align: right;
-	}	
-	.headeruser{
-		font-family: 'NanumSquareRoundB';
-		font-size : 18px;
-	}
-	
+.header {
+	width: 100%;
+	display: flex;
+	justify-content: center; /* 컨테이너를 화면 가운데 정렬 */
+	font-family: '나눔스퀘어';
+}
+.header-container {
+  width: 60%; /* 중앙 컨테이너의 폭 */
+  max-width: 1000px; 
+  min-width: 800px; 
+  display: flex;
+  justify-content: space-between; /* 내부 요소들을 양쪽 끝으로 배치 */
+  align-items: center; /* 내부 요소의 세로 중앙 정렬 */
+}
+.header .navs{
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.header .navs .logo{
+ 	float: left;
+}
+.header .navs .nav{
+	font-size : 15px;
+	margin-right: 10px;
+	position: relative;
+}
+.header a{
+	text-decoration-line: none;
+
+}
+
+.header .navs .nav .yellow{
+	color : #EDC06F
+}
+.header .navs .nav:visited {
+  	color : black;
+  	text-decoration: none;
+}
+:visited {
+  	color : black;
+  	text-decoration: none;
+}
+.header .navs  .nav:hover {
+ 	 color : #EDC06F;
+}
+.header .navs  .nav:hover .submenu {
+ 	 color : black;
+ 	 text-decoration: none;
+}
+ul, ol, li { list-style:none; margin:0; padding:0; }
+   
+ul.myMenu {position: absolute;top: 3.5%;left: 50%;transform: translate(-50%,-50%);z-index: 100000;}
+ul.myMenu > li { display:inline-block;  padding:5px 3px;  text-align:center; position:relative; }
+ul.myMenu > li:hover { background:#fff; }
+ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
+ul.myMenu > li:hover ul.submenu { display:block; }
+ul.myMenu > li ul.submenu > li { display:inline-block; padding:5px 10px; background-color: white; font-size : 15px;}
+ul.myMenu > li ul.submenu > li:hover { color: EDC06F; }
+
+
+.loginMenu{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* 항상 오른쪽 정렬 */
+  gap: 10px;
+}	
+.loginMenu input[type="button"],
+.loginMenu input[type="text"] {
+  background-color: white; /* 버튼 배경을 하얗게 설정 */
+  border: none; /* 테두리 제거 */
+  padding: 5px 10px; /* 버튼 안의 여백 */
+  font-size: 12px; /* 텍스트 크기 */
+  cursor: pointer; /* 마우스를 올릴 때 포인터 모양 */
+  border-radius:5px;
+  width:70px;
+  height:30px;
+}
+.headeruser{
+	font-family: 'NanumSquareRoundB';
+	font-size : 12px;
+}
+
+
+
 
 
 /*header (끝)*/
@@ -455,9 +477,18 @@ position: relative;
 	 line-height:200%;
 	 color: dimgray;
 	 height: 300px;
-	 position: relative;
+	 /*position: relative;*/
+	 display: flex;
+	 justify-content: center; /* 컨테이너를 화면 가운데 정렬 */
+
 	 bottom:0;
  }
+.footer-container {
+  width: 100%; /* 중앙 컨테이너의 폭 */
+  max-width: 1000px; 
+  min-width: 800px; 
+  display: flex;
+} 
  .footer2{
 	 background-color: snow;
 	 font-family: "나눔스퀘어";
@@ -624,17 +655,17 @@ justify-content: center;
 .total .maincontent .detailContainer .stocksDetailtext .name{
 	margin-bottom: 15px;
 	font-weight: bold;
-	color: 	#282828;
+	color: #282828;
 	font-size: 22px;
 	width: 100%;
 }
 .total .maincontent .detailContainer .stocksDetailtext .price{
 	margin-bottom: 10px;
-	color: 	#282828;
+	color: #282828;
 	font-size: 20px;
 }
 .total .maincontent .detailContainer .detail{
-	color: 	#282828;
+	color: #282828;
 	font-size: 17px;
 	color: black;
 	font-size: 15px;
@@ -648,11 +679,38 @@ justify-content: center;
 	font-size: 17px;
 	color: white;
 	border: none;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 
 }
 .blueBtn:hover{
 	background-color: rgb(70, 111, 235);
+}
+
+.greyBtn{
+	width: 90%;
+	height: 30px;
+	background-color:darkgrey;
+	font-size: 17px;
+	color: black;
+	border: none;
+	margin-bottom: 5px;
+
+}
+.greyBtn:hover{
+	background-color: grey;
+}
+.orangeBtn{
+	width: 44%;
+	height: 30px;
+	background-color:#EDC06F;
+	font-size: 17px;
+	color: black;
+	border: none;
+	margin-bottom: 5px;
+
+}
+.orangeBtn:hover{
+	background-color: orange;
 }
 .cart{
 	background-color: black;
@@ -802,7 +860,7 @@ justify-content: center;
 	width: 65%;
 
 }
-.test1{
+.right20{
 	text-align: left;
 	width: 20%;
 	float: left;
@@ -811,3 +869,146 @@ justify-content: center;
 	
 }
 
+/* 구매 내역 */
+.myPagePurchase{
+	width: 80%;
+	max-width: 1200px;
+	float: middle;
+	margin-bottom: 10px; 
+	padding: 10px; 
+	cursor: pointer;
+}
+.mypageDate{
+	color: #B70037;
+	
+}
+
+
+/* Login (시작)*/
+.total2 {
+	font-family: '나눔스퀘어';	
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    height: 100%; /* 화면 전체 높이 */
+    background: rgba(0, 0, 0, 0);
+    display: flex; /* 내부 요소 정렬을 위해 flex 사용 */
+}
+
+.login {
+    position: relative;
+    width: 50%; /* .login의 폭 */
+/*    background-color: #E0F2F1;*/
+    padding: 20px; /* 안쪽 여백 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 선택 사항: 그림자 추가 */
+    
+    display: flex; /* 플렉스박스 적용 */
+    flex-direction: column; /* 요소를 세로로 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    gap: 10px; /* 요소 간 간격 */
+}
+.total2 form{
+	position: relative;
+	align-items: center; 
+}
+.total2 .alert{
+	font-size: 16px;
+	color: red;
+}
+.total2 .input{
+	width: 300px;
+	height: 50px;
+	border-radius: 5px;
+	border: none;
+	border: 1px solid lightslategrey;
+	margin-bottom: 10px;
+}
+.total2 input.input1{
+	width: 300px;
+	height: 50px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid lightslategrey;
+	border-bottom: none;
+}
+.total2 input.input2{
+	width: 300px;
+	height: 50px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: none;
+	border: 1px solid lightslategrey;
+}
+
+.total2 button{
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	background-color: gainsboro;
+	color: black;
+	border-radius:5px;
+	border: none;
+
+}
+
+.floating-label {
+    position: relative;
+}
+
+.floating-label label {
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    font-size: 18px;
+    color: #aaa;
+    transition: 0.2s ease-in-out; /* 부드러운 애니메이션 */
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+    top: 5px;
+    left: 5px;
+    font-size: 12px;
+    color: #3498db; /* 포커스 시 텍스트 색상 */
+}
+button:hover {
+
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* hover 시 그림자 추가 */
+}
+/* Login (끝)*/
+
+
+
+/* contact (시작)*/
+.left55{
+	float: left;
+	width: 40%;
+	font-size: 16px;
+	font-family: '나눔스퀘어';	
+
+}
+.right45{
+	text-align: left;
+	width: 20%;
+	float: left;
+	font-size: 16px;
+	font-family: '나눔스퀘어';	
+	
+}
+input.input3{
+	width: 300px;
+	height: 50px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid lightslategrey;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	outline: none;
+}
+input.input3:focus {
+    border-bottom: 2px solid royalblue;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 포커스 시 살짝 그림자 효과 추가 */
+}
+/* contact (끝)*/

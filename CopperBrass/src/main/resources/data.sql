@@ -23,3 +23,4 @@ Insert into stocks(mainshow,id,name,category,price,imgsrc,showorhide) values ('m
 
 Insert into site_user(username,password,email) values('admin','$2a$10$9ngWr3mjs.ndVxl3uPBOJewZ8YrvwWrskxg9OB150TxlTLusK089G','abc@gallup.co.kr');
 Insert into site_user(username,password,email) values('user','$2a$10$9ngWr3mjs.ndVxl3uPBOJewZ8YrvwWrskxg9OB150TxlTLusK089G','abdc@gallup.co.kr');
+Insert into site_user(username,password,email) values('1111','$2a$10$uvhzt3PpwotmfN6.Kl3uteChG03x7GXMd1A3dq1z6nHIxb3ClznxK','abdcd@gallup.co.kr');
